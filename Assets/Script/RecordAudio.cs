@@ -27,6 +27,12 @@ public class RecordAudio : MonoBehaviour
         // defines our recorded clip
         recordedClip = Microphone.Start(device, false , lengthSec, sampleRate);
 
+        // Wait until mic starts
+        while (!(Microphone.GetPosition(device) > 0)) { }
+
+        audioSource.clip = recordedClip;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
     //Method for paying recording 
