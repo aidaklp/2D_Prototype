@@ -3795,8 +3795,9 @@ MonoBehaviour:
   DialogueText1: {fileID: 28530202}
   DialoguePanel1: {fileID: 1986371214}
   Sentences:
-  - laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  DialogueSpeed: 0.0005
+  - 'Hey! You two, how about making some quick cash? '
+  - Read what the machine says and make a song out of it.
+  DialogueSpeed: 0.05
 --- !u!1 &773277632
 GameObject:
   m_ObjectHideFlags: 0

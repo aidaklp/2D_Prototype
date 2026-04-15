@@ -1062,8 +1062,9 @@ MonoBehaviour:
   DialoguePanel2: {fileID: 1084472531}
   MoneyGenerationPanel: {fileID: 1107935355}
   Sentences:
-  - mooooo mooo mooo
-  DialogueSpeed: 0
+  - 'Yeaaah, this is the good stuff! '
+  - "How about you upload it to Spotify and see how you\u2019ve done?"
+  DialogueSpeed: 0.05
 --- !u!4 &1107299698
 Transform:
   m_ObjectHideFlags: 0
