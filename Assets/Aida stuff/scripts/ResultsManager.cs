@@ -1,14 +1,9 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
 public class ResultsManager : MonoBehaviour
 {
-    [Header("Audio Sources (from your players)")]
-    public AudioSource player1Source;
-    public AudioSource player2Source;
-
     [Header("UI")]
-    public GameObject dialoguePanel;
     public GameObject resultsPanel;
 
     public TextMeshProUGUI player1Score;
@@ -17,27 +12,27 @@ public class ResultsManager : MonoBehaviour
     [Header("Settings")]
     public int coinsPerSecond = 2;
 
-    // Called when button is pressed
-    public void ShowResults()
+    void Start()
     {
-        dialoguePanel.SetActive(false);
+        ShowResults();
+    }
+
+    void ShowResults()
+    {
+        // [NOTE 6] No need for dialogue panel anymore (removed system dependency)
         resultsPanel.SetActive(true);
 
-        int coins1 = CalculateCoins(player1Source);
-        int coins2 = CalculateCoins(player2Source);
+        // [NOTE 7] Read stored values from static class
+        int coins1 = CalculateCoins(GameResultsData.player1ClipLength);
+        int coins2 = CalculateCoins(GameResultsData.player2ClipLength);
 
         player1Score.text = "Player 1: " + coins1 + " coins";
         player2Score.text = "Player 2: " + coins2 + " coins";
     }
 
-    int CalculateCoins(AudioSource source)
+    int CalculateCoins(float clipLength)
     {
-        if (source.clip == null) return 0;
-
-        float length = source.clip.length;
-
-        int coins = Mathf.FloorToInt(length * coinsPerSecond);
-
-        return coins;
+        // [NOTE 8] Core formula: time × rate
+        return Mathf.FloorToInt(clipLength * coinsPerSecond);
     }
 }
