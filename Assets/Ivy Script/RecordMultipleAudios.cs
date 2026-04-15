@@ -20,14 +20,13 @@ public class RecordMultipleAudios : MonoBehaviour
 
     public enum GamePhase
     {
-        Dialogue1,// added by siennaS
         Player1Recording,
         Player2Recording,
         FinalPlayback
     }
 
     [Header("Two-Player State")]
-    [SerializeField] public GamePhase currentPhase = GamePhase.Player1Recording;
+    [SerializeField] private GamePhase currentPhase = GamePhase.Player1Recording;
     private AudioClip player1Clip;
     private AudioClip player2Clip;
     private bool isRecording = false;
@@ -79,7 +78,7 @@ public class RecordMultipleAudios : MonoBehaviour
         playBothButton?.onClick.AddListener(PlayBothRecordings);
         stopBothButton?.onClick.AddListener(StopBothRecordings);
 
-        ShowPhaseUI(GamePhase.Dialogue1); //edited by sienna
+        ShowPhaseUI(GamePhase.Player1Recording);
     }
 
     // ─────────────────────────────────────────────
@@ -355,16 +354,4 @@ public class RecordMultipleAudios : MonoBehaviour
         trimmedClip.SetData(trimmed, 0);
         return trimmedClip;
     }
-
-
-    //Code to change f=phase after dialogue
-
-    public void DialogueFinishedAndAdvance()
-    {
-        currentPhase = GamePhase.Player1Recording;
-        ShowPhaseUI(GamePhase.Player1Recording);
-    }
 }
-
-
- 
