@@ -22,13 +22,21 @@ public class SimpleFrameAnimation : MonoBehaviour
         StartCoroutine(Animate());
     }
 
+    //coroutine version 
+    public IEnumerator PlayAnimationCoroutine()
+    {
+        yield return StartCoroutine(Animate());
+    }
+
+    //core animation
     IEnumerator Animate()
     {
+
         for (int i = 0; i < frames.Length; i++)
         {
             if (image != null)
                 image.sprite = frames[i];
-            else
+            else if (spriteRenderer != null)
                 spriteRenderer.sprite = frames[i];
 
             yield return new WaitForSeconds(frameRate);
