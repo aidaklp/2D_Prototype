@@ -13,8 +13,6 @@ public class ResultsPreloader : MonoBehaviour
         GameResultsData.player1ClipLength = GetLength(player1Source);
         GameResultsData.player2ClipLength = GetLength(player2Source);
 
-        //switch scene AFTER storing data
-        SceneManager.LoadScene("ResultsScene");
     }
 
     float GetLength(AudioSource source)
