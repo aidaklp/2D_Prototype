@@ -29,6 +29,9 @@ public class GeneratorScript : MonoBehaviour
     private TextMeshProUGUI[] keyText;
     private TextMeshProUGUI[] BPMText;
 
+    //stores the font
+    [SerializeField] private TMP_FontAsset musicalFont;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -66,7 +69,15 @@ public class GeneratorScript : MonoBehaviour
         //makes the text in the middle
         box.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
 
-     
+        //changes text to black 
+        box.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+        //changes the font
+        box.GetComponent<TextMeshProUGUI>().font = musicalFont;
+
+
+
+
 
     }
 
