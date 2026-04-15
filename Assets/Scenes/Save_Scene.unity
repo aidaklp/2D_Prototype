@@ -2435,7 +2435,7 @@ MonoBehaviour:
   - {fileID: 81186463}
   - {fileID: 493661029}
   - {fileID: 614976332}
-  maxHeight: 200
+  maxHeight: 1
   smoothSpeed: 12
   sensitivity: 250
 --- !u!1 &788487806
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   - {fileID: 404768233}
   - {fileID: 1444456059}
   - {fileID: 1934015907}
-  maxHeight: 200
+  maxHeight: 1
   smoothSpeed: 12
   sensitivity: 250
 --- !u!1 &844917769
@@ -2670,7 +2670,6 @@ RectTransform:
   - {fileID: 1027218529}
   - {fileID: 1015301715}
   - {fileID: 934737211}
-  - {fileID: 1300019137}
   - {fileID: 808172636}
   m_Father: {fileID: 788487810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4228,135 +4227,6 @@ RectTransform:
   m_AnchoredPosition: {x: -193, y: -339}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &1295327941
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295327939}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
---- !u!1 &1300019136
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1300019137}
-  - component: {fileID: 1300019139}
-  - component: {fileID: 1300019138}
-  m_Layer: 5
-  m_Name: Visualizer_P1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1300019137
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1300019136}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2029671382}
-  - {fileID: 1695397208}
-  - {fileID: 423003439}
-  - {fileID: 1064392771}
-  - {fileID: 1638897828}
-  - {fileID: 1830960316}
-  - {fileID: 1635312426}
-  - {fileID: 2120490121}
-  - {fileID: 608508037}
-  - {fileID: 1929368873}
-  - {fileID: 1134265119}
-  - {fileID: 2120516608}
-  - {fileID: 1620500301}
-  - {fileID: 1846279119}
-  - {fileID: 1403899361}
-  - {fileID: 2085377054}
-  - {fileID: 218129002}
-  - {fileID: 992003965}
-  - {fileID: 1443837997}
-  - {fileID: 250604111}
-  - {fileID: 913312982}
-  - {fileID: 369035175}
-  - {fileID: 1323490117}
-  - {fileID: 1117734659}
-  - {fileID: 943943146}
-  - {fileID: 614460222}
-  - {fileID: 2078209505}
-  - {fileID: 276650873}
-  - {fileID: 991226502}
-  - {fileID: 1697077050}
-  - {fileID: 279932132}
-  - {fileID: 44379372}
-  m_Father: {fileID: 844917770}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -386.49695}
-  m_SizeDelta: {x: 1218.9465, y: 211.1751}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1300019138
 --- !u!114 &1342330306
 MonoBehaviour:
   m_ObjectHideFlags: 0
