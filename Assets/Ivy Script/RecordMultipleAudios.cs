@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement; 
 
 public class RecordMultipleAudios : MonoBehaviour
 {
@@ -279,6 +280,7 @@ public class RecordMultipleAudios : MonoBehaviour
         player1AudioSource?.Stop();
         player2AudioSource?.Stop();
         SetText(finalStatusText, "Playback stopped.");
+        SceneManager.LoadScene("Moneygeneration");
     }
 
     // ─────────────────────────────────────────────

@@ -2705,15 +2705,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 754195142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e4cd1b5086668e4192e47645046824c, type: 3}
+  m_Script: {fileID: 11500000, guid: 544c09cedae9d9c49a84fe998949fe6f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue1
   recordMultipleAudios: {fileID: 754195143}
-  DialogueText: {fileID: 28530202}
+  DialogueText1: {fileID: 28530202}
   DialoguePanel1: {fileID: 1986371214}
   Sentences:
-  - laaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  DialogueSpeed: 0.05
+  - laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  DialogueSpeed: 0.0005
 --- !u!1 &787906812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,7 +2804,7 @@ MonoBehaviour:
   - {fileID: 81186463}
   - {fileID: 493661029}
   - {fileID: 614976332}
-  maxHeight: 1
+  maxHeight: 2
   smoothSpeed: 12
   sensitivity: 250
 --- !u!1 &788487806
@@ -3003,7 +3003,7 @@ MonoBehaviour:
   - {fileID: 404768233}
   - {fileID: 1444456059}
   - {fileID: 1934015907}
-  maxHeight: 1
+  maxHeight: 2
   smoothSpeed: 12
   sensitivity: 250
 --- !u!1 &844917769
