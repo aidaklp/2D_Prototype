@@ -3966,7 +3966,7 @@ MonoBehaviour:
   - {fileID: 614976332}
   maxHeight: 5
   smoothSpeed: 12
-  sensitivity: 350
+  sensitivity: 400
 --- !u!1 &788487806
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,7 +4164,7 @@ MonoBehaviour:
   - {fileID: 773277633}
   maxHeight: 2
   smoothSpeed: 12
-  sensitivity: 250
+  sensitivity: 300
 --- !u!1 &806419831
 GameObject:
   m_ObjectHideFlags: 0
@@ -4332,7 +4332,7 @@ MonoBehaviour:
   - {fileID: 1934015907}
   maxHeight: 5
   smoothSpeed: 12
-  sensitivity: 350
+  sensitivity: 400
 --- !u!1 &842106337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4942,7 +4942,7 @@ MonoBehaviour:
   - {fileID: 892827821}
   - {fileID: 2021759725}
   maxHeight: 2
-  sensitivity: 250
+  sensitivity: 300
   smoothSpeed: 12
 --- !u!1 &892827820
 GameObject:
