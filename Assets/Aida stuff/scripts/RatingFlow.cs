@@ -49,8 +49,8 @@ public class RatingFlow : MonoBehaviour
         player1Text.gameObject.SetActive(true);
         player2Text.gameObject.SetActive(true);
 
-        StartCoroutine(CountCoins(player1Text, "Player 1: " + player1Rating + " stars", p1Coins));
-        StartCoroutine(CountCoins(player2Text, "Player 2: " + player2Rating + " stars", p2Coins));
+        StartCoroutine(CountCoins(player1Text, "Player 2: " + player1Rating + " stars", p1Coins));
+        StartCoroutine(CountCoins(player2Text, "Player 1: " + player2Rating + " stars", p2Coins));
 
         // background animation
         if (resultsAnimation != null)
@@ -66,7 +66,7 @@ public class RatingFlow : MonoBehaviour
     // COUNT UP 
     IEnumerator CountCoins(TextMeshProUGUI text, string prefix, int target)
     {
-        float duration = 1f;
+        float duration = 2f;
         float t = 0;
         int current = 0;
 
