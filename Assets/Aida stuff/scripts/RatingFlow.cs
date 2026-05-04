@@ -8,6 +8,7 @@ public class RatingFlow : MonoBehaviour
     [Header("Panels")]
     public GameObject player1Panel;
     public GameObject player2Panel;
+    public GameObject DialoguePanel3;
     public GameObject resultsPanel;
 
     [Header("UI")]
@@ -37,11 +38,19 @@ public class RatingFlow : MonoBehaviour
     public void ConfirmPlayer2()
     {
         player2Rating = player2RatingUI.GetRating();
-        StartCoroutine(SwitchPanels(player2Panel, resultsPanel));
+        StartCoroutine(SwitchPanels(player2Panel, DialoguePanel3));
     }
 
     // SHOW RESULTS
     public void ShowResults()
+    {
+       
+        StartCoroutine(SwitchPanels(DialoguePanel3, resultsPanel));
+
+      
+    }
+
+    public void DisplayResults()
     {
         int p1Coins = ToCoins(player1Rating);
         int p2Coins = ToCoins(player2Rating);
@@ -57,8 +66,10 @@ public class RatingFlow : MonoBehaviour
             resultsAnimation.PlayAnimation();
     }
 
-    // RATING 2 COINS
-    int ToCoins(float rating)
+
+
+        // RATING 2 COINS
+        int ToCoins(float rating)
     {
         return Mathf.RoundToInt(rating * 10f); // 5 stars = 50 coins
     }
