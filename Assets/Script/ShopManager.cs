@@ -1,8 +1,10 @@
 using System;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 public class ShopManager : MonoBehaviour
 {
     //array for shop items and sets the amount of shop items and how many values with them 
@@ -13,7 +15,12 @@ public class ShopManager : MonoBehaviour
     public TMP_Text CoinsTXT;
 
     // will track purchased items 
-    public bool[] itemPurchased; 
+    public bool[] itemPurchased;
+
+    
+    [Header("Next Round")]
+    //stores reffrence of next round button
+    public Button nextRoundButton;
 
 
 
@@ -101,5 +108,16 @@ public class ShopManager : MonoBehaviour
     public void UpdateCoinsDisplay()
     {
         CoinsTXT.text = "Coins: " + GameData.Instance.coins.ToString();
+    }
+
+    // next round method
+    public void NextRound()
+    {
+        //adds a game round everytime this is calles
+        GameData.Instance.currentRound++;
+        // calls the reset round data method
+        GameData.Instance.ResetRoundData();
+        //changes scene back to generation scene
+        SceneManager.LoadScene("GeneratingScene"); 
     }
 }

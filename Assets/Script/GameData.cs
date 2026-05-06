@@ -20,6 +20,14 @@ public class GameData : MonoBehaviour
     public bool hasMetronome = false;
 
 
+    [Header("Rounds")]
+    //used to store the current round 
+    public int currentRound = 1;
+
+
+
+
+
     //method called for before Start() so very begining of the game
     private void Awake()
     {
@@ -41,4 +49,10 @@ public class GameData : MonoBehaviour
         }
     }
 
+    public void ResetRoundData()
+    {
+        FinalBPM = "";
+        FinalGenre = "";
+        FinalKey = "";
+    }
 }

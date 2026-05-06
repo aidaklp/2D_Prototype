@@ -73,6 +73,22 @@ public class RecordMultipleAudios : MonoBehaviour
 
     private void Start()
     {
+        //restes both recording to null (so deletes the recording) when scene  starts (so can reset when new round start)
+        player1Clip = null;
+        player2Clip = null;
+
+        isRecording = false;
+        // makes sure it starts on the right phase
+        currentPhase = GamePhase.Dialogue1;
+        ShowPhaseUI(GamePhase.Dialogue1); //edited by sienna
+
+        // resets metronome
+        if (metronomeManager != null)
+        {
+            metronomeManager.enabled = false;
+        }
+
+
         // Wire up buttons if they have been assigned in the Inspector
         player1StartRecordingButton?.onClick.AddListener(StartPlayer1Recording);
         player1StopRecordingButton?.onClick.AddListener(StopPlayer1Recording);
@@ -85,7 +101,7 @@ public class RecordMultipleAudios : MonoBehaviour
         playBothButton?.onClick.AddListener(PlayBothRecordings);
         stopBothButton?.onClick.AddListener(StopBothRecordings);
 
-        ShowPhaseUI(GamePhase.Dialogue1); //edited by sienna
+        
     }
 
     // ─────────────────────────────────────────────

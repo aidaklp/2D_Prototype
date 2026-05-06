@@ -38,6 +38,8 @@ public class RatingFlow : MonoBehaviour
     
     public void Start()
     {
+        //resets counts (used between rounds)
+        countsCompleted = 0;
         goToShopButton.gameObject.SetActive(false);
 
 

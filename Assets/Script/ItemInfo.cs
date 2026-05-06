@@ -19,7 +19,7 @@ public class ItemInfo : MonoBehaviour
 
 
         //checks for the item id of the item and sets the price to the right one (from the second column)
-        PriceTXT.text = "Price: $" + ShopManager.GetComponent<ShopManager>().shopItems[ItemID, 2].ToString();
+        PriceTXT.text = "Price: $" + ShopManager.GetComponent<ShopManager>().shopItems[ItemID, 1].ToString();
 
         //changes the UI to purchased
         if (sm.itemPurchased != null && sm.itemPurchased[ItemID])
