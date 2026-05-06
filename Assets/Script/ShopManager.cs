@@ -7,7 +7,7 @@ public class ShopManager : MonoBehaviour
 {
     //array for shop items and sets the amount of shop items and how many values with them 
     public int[,] shopItems = new int [2,2];
-    public float coins;
+   
 
    //stores where the coins number will appear for each item
     public TMP_Text CoinsTXT;
@@ -21,7 +21,7 @@ public class ShopManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        CoinsTXT.text = "Coins:" + coins.ToString();
+        CoinsTXT.text = "Coins:" + GameData.Instance.coins.ToString();
 
         //setting up the array by making item ID's and it starts as one as i plan to save the system and using the array zero can break in the future
         shopItems[0, 0] = 1;// item 1 iD
@@ -62,13 +62,13 @@ public class ShopManager : MonoBehaviour
 
 
         //checks if the players have enough coins for the item
-        if (coins >= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID,1])
+        if (GameData.Instance.coins >= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID,1])
         {
             //remove the coins (so subracting the price from our coins
-            coins -= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID, 1];
+            GameData.Instance.coins -= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID, 1];
 
             //updates the coins amount after purchase
-            CoinsTXT.text = "Coins:" + coins.ToString();
+            CoinsTXT.text = "Coins:" + GameData.Instance.coins.ToString();
 
 
             //saves as bought
@@ -79,6 +79,13 @@ public class ShopManager : MonoBehaviour
             ButtonRef.GetComponent<Button>().interactable = false;
 
             Debug.Log("Bought item with ID: " + shopItems[itemIndex, 0]);
+
+
+            //checks and stores if the metronome item is bought
+            if (itemIndex == 0)
+            {
+                GameData.Instance.hasMetronome = true;
+            }
         }
         else
         {
@@ -88,5 +95,11 @@ public class ShopManager : MonoBehaviour
 
 
         Debug.Log("Bought item with ID: " + ButtonRef.GetComponent<ItemInfo>().ItemID);
+    }
+
+
+    public void UpdateCoinsDisplay()
+    {
+        CoinsTXT.text = "Coins: " + GameData.Instance.coins.ToString();
     }
 }

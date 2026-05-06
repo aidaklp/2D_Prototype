@@ -12,6 +12,14 @@ public class GameData : MonoBehaviour
     public string FinalGenre;
     public string FinalKey;
 
+    //seting coins as a variable 
+    public float coins = 0; 
+
+
+    //keeps track if metronomeItem has been bought
+    public bool hasMetronome = false;
+
+
     //method called for before Start() so very begining of the game
     private void Awake()
     {

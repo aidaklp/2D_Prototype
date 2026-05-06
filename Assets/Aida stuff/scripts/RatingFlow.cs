@@ -10,6 +10,11 @@ public class RatingFlow : MonoBehaviour
     public GameObject player2Panel;
     public GameObject DialoguePanel3;
     public GameObject resultsPanel;
+    public GameObject shopPanel;
+
+    [Header("Shop")]
+    public Button goToShopButton;
+    public ShopManager shopManager;
 
     [Header("UI")]
     public Image fadeImage;
@@ -26,6 +31,32 @@ public class RatingFlow : MonoBehaviour
     // stored final values
     private float player1Rating;
     private float player2Rating;
+
+    //stores the counts as this script run one count per player so this will be used to make sure both counts happen before the shop button appears
+    private int countsCompleted = 0;
+
+    
+    public void Start()
+    {
+        goToShopButton.gameObject.SetActive(false);
+
+
+    }
+
+
+    // method for going to shop
+    public void GoToShop()
+    {
+        player1Panel.SetActive(false);
+        player2Panel.SetActive(false);
+        DialoguePanel3.SetActive(false);
+
+        shopManager.UpdateCoinsDisplay();
+        StartCoroutine(SwitchPanels(resultsPanel, shopPanel));
+    }
+
+
+
 
     // PLAYER 1 CONFIRM
     public void ConfirmPlayer1()
@@ -52,6 +83,10 @@ public class RatingFlow : MonoBehaviour
 
     public void DisplayResults()
     {
+        Debug.Log("DisplayResults called");
+        //resets counts
+        countsCompleted = 0;
+
         int p1Coins = ToCoins(player1Rating);
         int p2Coins = ToCoins(player2Rating);
 
@@ -64,6 +99,8 @@ public class RatingFlow : MonoBehaviour
         // background animation
         if (resultsAnimation != null)
             resultsAnimation.PlayAnimation();
+
+        
     }
 
 
@@ -73,6 +110,8 @@ public class RatingFlow : MonoBehaviour
     {
         return Mathf.RoundToInt(rating * 10f); // 5 stars = 50 coins
     }
+
+
 
     // COUNT UP 
     IEnumerator CountCoins(TextMeshProUGUI text, string prefix, int target)
@@ -93,6 +132,20 @@ public class RatingFlow : MonoBehaviour
         }
 
         text.text = $"{prefix} ({target} coins)";
+
+        //adds the coins from previous round with the coins already collected 
+        GameData.Instance.coins += target;
+
+
+        //adds a count once this code has run (used to count the counts)
+        countsCompleted++;
+
+        Debug.Log("Count completed, countsCompleted = " + countsCompleted);
+        //only shows button once both couns have been completed
+        if (countsCompleted >= 2)
+        {
+            goToShopButton.gameObject.SetActive(true);
+        }
     }
 
     // PANEL SWITCHING

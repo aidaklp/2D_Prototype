@@ -62,6 +62,11 @@ public class RecordMultipleAudios : MonoBehaviour
     [SerializeField] private Button stopBothButton;
     [SerializeField] private TextMeshProUGUI finalStatusText;
 
+
+
+    //refrence to the metronome manager script
+    [SerializeField] private MetronomeManager metronomeManager; 
+
     // ─────────────────────────────────────────────
     // Unity Lifecycle
     // ─────────────────────────────────────────────
@@ -145,6 +150,12 @@ public class RecordMultipleAudios : MonoBehaviour
         player1StartRecordingButton?.gameObject.SetActive(false);
         player1StopRecordingButton?.gameObject.SetActive(true);
         player1ConfirmButton?.gameObject.SetActive(false);
+
+        //checks whether the players have purchased a metronome and sets it to true if that have which will indicate the metronome script to start
+        if (GameData.Instance.hasMetronome)
+        {
+            metronomeManager.enabled = true;
+        }
     }
 
     /// <summary>Stops the Player 1 microphone and stores the clip.</summary>
@@ -162,6 +173,12 @@ public class RecordMultipleAudios : MonoBehaviour
         SetText(player1StatusText, "Recording saved! Press Confirm when you're ready.");
         player1StopRecordingButton?.gameObject.SetActive(false);
         player1ConfirmButton?.gameObject.SetActive(true);
+
+        //stops metronome when player stops recording 
+        if (metronomeManager != null)
+        {
+            metronomeManager.enabled = false;
+        } 
     }
 
     /// <summary>
@@ -206,6 +223,12 @@ public class RecordMultipleAudios : MonoBehaviour
         player2StartRecordingButton?.gameObject.SetActive(false);
         player2StopRecordingButton?.gameObject.SetActive(true);
         player2ConfirmButton?.gameObject.SetActive(false);
+
+        //checks whether the players have purchased a metronome and sets it to true if that have which will indicate the metronome script to start
+        if (GameData.Instance.hasMetronome)
+        {
+            metronomeManager.enabled = true;
+        }
     }
 
     /// <summary>Stops the Player 2 microphone and stores the clip.</summary>
@@ -223,6 +246,12 @@ public class RecordMultipleAudios : MonoBehaviour
         SetText(player2StatusText, "Recording saved! Press Confirm when you're ready.");
         player2StopRecordingButton?.gameObject.SetActive(false);
         player2ConfirmButton?.gameObject.SetActive(true);
+
+        //stops metronome when player stops recording 
+        if (metronomeManager != null)
+        {
+            metronomeManager.enabled = false;
+        }
     }
 
     /// <summary>

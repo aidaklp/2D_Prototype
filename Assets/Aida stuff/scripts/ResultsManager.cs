@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ResultsManager : MonoBehaviour
 {
@@ -14,6 +15,22 @@ public class ResultsManager : MonoBehaviour
     [Header("Settings")]
     public int coinsPerSecond = 2;
     public float countDuration = 1.5f; //how long counting takes
+
+
+    [Header("panels")]
+    //stores a reffrence to the results panel game object
+    public GameObject resultsPanel;
+    //stores reffrence for shop panel gO
+    public GameObject shopPanel;
+    //reffrences the shop button object
+    public Button goToShopButton;
+
+
+    private void Start()
+    {
+        //sets the button as diabled when the panel opens 
+        goToShopButton.gameObject.SetActive(false);
+    }
 
     //button
     public void StartResultsSequence()
@@ -38,6 +55,10 @@ public class ResultsManager : MonoBehaviour
 
         //player 2 count
         yield return StartCoroutine(CountUp(player2Score, "Player 2: ", coins2));
+
+
+        //unhides the go to shop button
+        goToShopButton.gameObject.SetActive(true);
     }
 
     IEnumerator CountUp(TextMeshProUGUI textUI, string label, int targetValue)
@@ -67,5 +88,11 @@ public class ResultsManager : MonoBehaviour
     int CalculateCoins(float length)
     {
         return Mathf.FloorToInt(length * coinsPerSecond);
+    }
+
+    public void GotoShop()
+    {
+        resultsPanel.SetActive(false);
+        shopPanel.SetActive(true );
     }
 }
