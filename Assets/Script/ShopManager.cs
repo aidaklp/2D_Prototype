@@ -1,0 +1,92 @@
+using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using TMPro;
+public class ShopManager : MonoBehaviour
+{
+    //array for shop items and sets the amount of shop items and how many values with them 
+    public int[,] shopItems = new int [2,2];
+    public float coins;
+
+   //stores where the coins number will appear for each item
+    public TMP_Text CoinsTXT;
+
+    // will track purchased items 
+    public bool[] itemPurchased; 
+
+
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        CoinsTXT.text = "Coins:" + coins.ToString();
+
+        //setting up the array by making item ID's and it starts as one as i plan to save the system and using the array zero can break in the future
+        shopItems[0, 0] = 1;// item 1 iD
+        shopItems [0, 1] = 3;// item 1 price
+
+       
+        shopItems[1, 0] = 2;// item 2 ID
+        shopItems[1, 1] = 5;// Item 2 price
+
+
+
+        //Initialises the purchase tracker (one slot per item)
+        itemPurchased = new bool[shopItems.GetLength(0)];
+
+    }
+
+
+
+
+    //creating the buying method
+    public void Buy()
+    {
+        //making reffrences to the button and the event system 
+        // this is done by creating a variable ButtonRef that will store the GamObject in the scene that has the event tag and will grab every event system component from the object being clicked on
+        GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
+
+
+        // stores the Item ID from the button that has been clicked (creates a variable so i dont have to repeat that line of code over and over again)
+        int itemIndex = ButtonRef.GetComponent<ItemInfo>().ItemID;
+
+
+        //Blocks item if already purchased 
+        if (itemPurchased[itemIndex])
+        {
+            Debug.Log("Item already purchased");
+            return;
+        }
+
+
+        //checks if the players have enough coins for the item
+        if (coins >= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID,1])
+        {
+            //remove the coins (so subracting the price from our coins
+            coins -= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID, 1];
+
+            //updates the coins amount after purchase
+            CoinsTXT.text = "Coins:" + coins.ToString();
+
+
+            //saves as bought
+            itemPurchased [itemIndex] = true;
+
+
+            //visually disables the button 
+            ButtonRef.GetComponent<Button>().interactable = false;
+
+            Debug.Log("Bought item with ID: " + shopItems[itemIndex, 0]);
+        }
+        else
+        {
+            Debug.Log("Not enough coins.");
+        }
+    
+
+
+        Debug.Log("Bought item with ID: " + ButtonRef.GetComponent<ItemInfo>().ItemID);
+    }
+}

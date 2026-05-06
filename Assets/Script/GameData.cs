@@ -2,10 +2,10 @@ using Unity.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class GeneratorData : MonoBehaviour
+public class GameData : MonoBehaviour
 {
     // makes usre that there will only be one copy of the variables defined in this script 
-   public static GeneratorData Instance;
+   public static GameData Instance;
 
     // string variables that will store the generation results and are public so other scripts can use them
     public string FinalBPM;

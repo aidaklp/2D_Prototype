@@ -97,9 +97,9 @@ public class GeneratorScript : MonoBehaviour
         }
 
         //saves the varaibles somwehere elese than this scrip so the stored variables will still exist nd can be reffrenced outside of this scene
-        GeneratorData.Instance.FinalBPM = BPMText[9].text;
-        GeneratorData.Instance.FinalGenre = genreText[9].text;
-        GeneratorData.Instance.FinalKey = keyText[9].text;
+        GameData.Instance.FinalBPM = BPMText[9].text;
+        GameData.Instance.FinalGenre = genreText[9].text;
+        GameData.Instance.FinalKey = keyText[9].text;
 
         StartCoroutine(AnimateRoll(0, genreContainer));
         StartCoroutine(AnimateRoll(0.5f, BPMContainer));

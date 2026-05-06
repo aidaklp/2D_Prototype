@@ -10,10 +10,10 @@ public class HUDResults : MonoBehaviour
     private void Start()
     {
         // makes sure that an object containing the generatorData script exists
-        if (GeneratorData.Instance != null)
+        if (GameData.Instance != null)
         {
             //sets the text of the UI element to display te results from the generation
-            hudText.text = $"{GeneratorData.Instance.FinalGenre} {GeneratorData.Instance.FinalBPM} {GeneratorData.Instance.FinalKey}";
+            hudText.text = $"{GameData.Instance.FinalGenre} {GameData.Instance.FinalBPM} {GameData.Instance.FinalKey}";
         }
     }
 
