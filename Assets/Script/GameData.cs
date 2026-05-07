@@ -13,12 +13,13 @@ public class GameData : MonoBehaviour
     public string FinalKey;
 
     //seting coins as a variable 
-    public float coins = 0; 
+    public float coins = 0;
 
-
+    [Header("Items")]
     //keeps track if metronomeItem has been bought
     public bool hasMetronome = false;
-
+    //keeps track when redo item has been bought
+    public bool hasRedo = false;
 
     [Header("Rounds")]
     //used to store the current round 

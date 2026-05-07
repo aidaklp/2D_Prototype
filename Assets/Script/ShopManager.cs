@@ -93,6 +93,10 @@ public class ShopManager : MonoBehaviour
             {
                 GameData.Instance.hasMetronome = true;
             }
+            else if (itemIndex == 1)
+            {
+                GameData.Instance.hasRedo = true;
+            }
         }
         else
         {

@@ -46,7 +46,8 @@ public class RecordMultipleAudios : MonoBehaviour
     [SerializeField] private GameObject player1RecordingPanel;
     [SerializeField] private Button player1StartRecordingButton;
     [SerializeField] private Button player1StopRecordingButton;
-    [SerializeField] private Button player1ConfirmButton;         // advances to Player 2
+    [SerializeField] private Button player1ConfirmButton;   // advances to Player 2
+    [SerializeField] private Button player1RedoButton;  // added by sienna
     [SerializeField] private TextMeshProUGUI player1StatusText;
 
     [Header("UI – Player 2 Recording Screen")]
@@ -54,6 +55,7 @@ public class RecordMultipleAudios : MonoBehaviour
     [SerializeField] private Button player2StartRecordingButton;
     [SerializeField] private Button player2StopRecordingButton;
     [SerializeField] private Button player2ConfirmButton;         // advances to Final screen
+    [SerializeField] private Button player2RedoButton; // added by sienna
     [SerializeField] private TextMeshProUGUI player2StatusText;
 
     [Header("UI – Final Playback Screen")]
@@ -62,6 +64,9 @@ public class RecordMultipleAudios : MonoBehaviour
     [SerializeField] private Button stopBothButton;
     [SerializeField] private TextMeshProUGUI finalStatusText;
 
+    [Header("Redo Tracking")]
+    private bool player1UsedRedo = false;
+    private bool player2UsedRedo = false; 
 
 
     //refrence to the metronome manager script
@@ -78,6 +83,10 @@ public class RecordMultipleAudios : MonoBehaviour
         player2Clip = null;
 
         isRecording = false;
+
+        //sets player used redo to false when scene starts
+        player1UsedRedo = false;
+        player2UsedRedo = false;
         // makes sure it starts on the right phase
         currentPhase = GamePhase.Dialogue1;
         ShowPhaseUI(GamePhase.Dialogue1); //edited by sienna
@@ -88,6 +97,9 @@ public class RecordMultipleAudios : MonoBehaviour
             metronomeManager.enabled = false;
         }
 
+        //hides the redo button when the scene loads (so they stay hidden when the item isnt bought
+        player1RedoButton?.gameObject.SetActive(false);
+        player2RedoButton?.gameObject.SetActive(false);
 
         // Wire up buttons if they have been assigned in the Inspector
         player1StartRecordingButton?.onClick.AddListener(StartPlayer1Recording);
@@ -174,6 +186,44 @@ public class RecordMultipleAudios : MonoBehaviour
         }
     }
 
+    //method for redo item
+    public void Player1Redo()
+    {
+        //sets the player 1 used redo boolian to tru (will help prevent the use of it twice)
+        player1UsedRedo = true;
+
+        //disables the redo button 
+        player1RedoButton?.gameObject.SetActive(false);
+
+        //deletes the previous clip
+        player1Clip = null;
+
+        //resets the Ui back to recording setting
+        SetText(player1StatusText, "Re-record your part!");
+        player1StartRecordingButton?.gameObject.SetActive(true);
+        player1StopRecordingButton?.gameObject.SetActive(false);
+        player1ConfirmButton?.gameObject.SetActive(false);
+    }
+
+    //method for skip redo button
+    public void Player1SkipRedo()
+    {
+        
+        player1UsedRedo = true;
+        //hides the redo button
+        player1RedoButton?.gameObject.SetActive(false);
+
+        player1ConfirmButton.onClick.RemoveAllListeners();
+        player1ConfirmButton.onClick.AddListener(ConfirmPlayer1AndAdvance);
+
+        //changes game phase to Player2Recording 
+        currentPhase = GamePhase.Player2Recording;
+        //shows the ui of player2recording (so opens that panel)
+        ShowPhaseUI(GamePhase.Player2Recording);
+
+    }
+
+
     /// <summary>Stops the Player 1 microphone and stores the clip.</summary>
     public void StopPlayer1Recording()
     {
@@ -189,6 +239,22 @@ public class RecordMultipleAudios : MonoBehaviour
         SetText(player1StatusText, "Recording saved! Press Confirm when you're ready.");
         player1StopRecordingButton?.gameObject.SetActive(false);
         player1ConfirmButton?.gameObject.SetActive(true);
+
+        //checks if player has bought the redo item and if they haven't used it then
+        if (GameData.Instance.hasRedo && !player1UsedRedo)
+        {
+            Debug.Log("Showing redo button");
+            //shows the redo button
+            player1RedoButton?.gameObject.SetActive(true);
+
+            //adds and removes listeners
+
+            player1ConfirmButton.onClick.RemoveAllListeners();
+            player1ConfirmButton.onClick.AddListener(Player1SkipRedo);
+
+            //waits for the player to decide
+            return;
+        }
 
         //stops metronome when player stops recording 
         if (metronomeManager != null)
@@ -210,6 +276,13 @@ public class RecordMultipleAudios : MonoBehaviour
         }
 
         player1Clip = TrimSilence(player1Clip);
+
+        Debug.Log("hasRedo: " + GameData.Instance.hasRedo);
+        Debug.Log("player1UsedRedo: " + player1UsedRedo);
+        
+        
+
+        
         currentPhase = GamePhase.Player2Recording;
         ShowPhaseUI(GamePhase.Player2Recording);
     }
@@ -263,12 +336,67 @@ public class RecordMultipleAudios : MonoBehaviour
         player2StopRecordingButton?.gameObject.SetActive(false);
         player2ConfirmButton?.gameObject.SetActive(true);
 
+        //checks if player has bought the redo item and if they haven't used it then
+        if (GameData.Instance.hasRedo && !player2UsedRedo)
+        {
+            Debug.Log("Showing redo button");
+            //shows the redo button
+            player2RedoButton?.gameObject.SetActive(true);
+
+            //adds and removes listeners
+
+            player2ConfirmButton.onClick.RemoveAllListeners();
+            player2ConfirmButton.onClick.AddListener(Player1SkipRedo);
+
+            //waits for the player to decide
+            return;
+        }
+
         //stops metronome when player stops recording 
         if (metronomeManager != null)
         {
             metronomeManager.enabled = false;
         }
     }
+
+    //method for redo item
+    public void Player2Redo()
+    {
+        //sets the player 1 used redo boolian to tru (will help prevent the use of it twice)
+        player2UsedRedo = true;
+
+        //disables the redo button 
+        player2RedoButton?.gameObject.SetActive(false);
+
+        //deletes the previous clip
+        player2Clip = null;
+
+        //resets the Ui back to recording setting
+        SetText(player1StatusText, "Re-record your part!");
+        player2StartRecordingButton?.gameObject.SetActive(true);
+        player2StopRecordingButton?.gameObject.SetActive(false);
+        player2ConfirmButton?.gameObject.SetActive(false);
+    }
+
+    //method for skip redo button
+    public void Player2SkipRedo()
+    {
+
+        player2UsedRedo = true;
+        //hides the redo button
+        player2RedoButton?.gameObject.SetActive(false);
+
+        player2ConfirmButton.onClick.RemoveAllListeners();
+        player2ConfirmButton.onClick.AddListener(ConfirmPlayer2AndAdvance);
+
+
+        //changes game phase to Player2Recording 
+        currentPhase = GamePhase.FinalPlayback;
+        //shows the ui of player2recording (so opens that panel)
+        ShowPhaseUI(GamePhase.FinalPlayback);
+
+    }
+
 
     /// <summary>
     /// Trims the Player 2 clip and advances the game to the final playback phase.
@@ -282,6 +410,9 @@ public class RecordMultipleAudios : MonoBehaviour
         }
 
         player2Clip = TrimSilence(player2Clip);
+
+       
+
         currentPhase = GamePhase.FinalPlayback;
         ShowPhaseUI(GamePhase.FinalPlayback);
     }
@@ -411,6 +542,9 @@ public class RecordMultipleAudios : MonoBehaviour
         currentPhase = GamePhase.Player1Recording;
         ShowPhaseUI(GamePhase.Player1Recording);
     }
+
+
+
 }
 
 
