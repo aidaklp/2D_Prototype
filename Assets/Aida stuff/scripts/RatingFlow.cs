@@ -28,66 +28,63 @@ public class RatingFlow : MonoBehaviour
     [Header("Extras")]
     public SimpleFrameAnimation resultsAnimation;
 
-    // stored final values
     private float player1Rating;
     private float player2Rating;
 
-    //stores the counts as this script run one count per player so this will be used to make sure both counts happen before the shop button appears
+    // what controls shop button unlock
     private int countsCompleted = 0;
 
-    
     public void Start()
     {
-        //resets counts (used between rounds)
+        //  reset state when scene loads
         countsCompleted = 0;
-        goToShopButton.gameObject.SetActive(false);
 
-
+        if (goToShopButton != null)
+            goToShopButton.gameObject.SetActive(false);
     }
 
+    // SHOP BUTTON 
 
-    // method for going to shop
     public void GoToShop()
+    {
+        StartCoroutine(GoToShopRoutine());
+    }
+
+    IEnumerator GoToShopRoutine()
     {
         player1Panel.SetActive(false);
         player2Panel.SetActive(false);
         DialoguePanel3.SetActive(false);
 
-        shopManager.UpdateCoinsDisplay();
-        StartCoroutine(SwitchPanels(resultsPanel, shopPanel));
+        yield return StartCoroutine(SwitchPanels(resultsPanel, shopPanel));
+
+        if (shopManager != null)
+            shopManager.UpdateCoinsDisplay();
     }
 
+    // RATING CONFIRM 
 
-
-
-    // PLAYER 1 CONFIRM
     public void ConfirmPlayer1()
     {
         player1Rating = player1RatingUI.GetRating();
         StartCoroutine(SwitchPanels(player1Panel, player2Panel));
     }
 
-    // PLAYER 2 CONFIRM
     public void ConfirmPlayer2()
     {
         player2Rating = player2RatingUI.GetRating();
         StartCoroutine(SwitchPanels(player2Panel, DialoguePanel3));
     }
 
-    // SHOW RESULTS
     public void ShowResults()
     {
-       
         StartCoroutine(SwitchPanels(DialoguePanel3, resultsPanel));
-
-      
     }
 
+    //coins + shop unlock logic happens
     public void DisplayResults()
     {
         Debug.Log("DisplayResults called");
-        //resets counts
-        countsCompleted = 0;
 
         int p1Coins = ToCoins(player1Rating);
         int p2Coins = ToCoins(player2Rating);
@@ -98,35 +95,43 @@ public class RatingFlow : MonoBehaviour
         StartCoroutine(CountCoins(player1Text, "Player 2: " + player1Rating + " stars", p1Coins));
         StartCoroutine(CountCoins(player2Text, "Player 1: " + player2Rating + " stars", p2Coins));
 
-        // background animation
         if (resultsAnimation != null)
             resultsAnimation.PlayAnimation();
 
-        
+        // show shop button
+        if (goToShopButton != null)
+            goToShopButton.gameObject.SetActive(true);
     }
 
 
-
-        // RATING 2 COINS
-        int ToCoins(float rating)
+    int ToCoins(float rating)
     {
-        return Mathf.RoundToInt(rating * 10f); // 5 stars = 50 coins
+        return Mathf.RoundToInt(rating * 10f);
     }
 
+    //COIN COUNT ANIMATION 
 
-
-    // COUNT UP 
     IEnumerator CountCoins(TextMeshProUGUI text, string prefix, int target)
     {
+        // prevents full system crash if UI is missing
+        if (text == null)
+        {
+            Debug.LogError("CountCoins: missing text reference");
+
+            countsCompleted++;
+            TryShowShopButton();
+            yield break;
+        }
+
         float duration = 2f;
-        float t = 0;
+        float t = 0f;
         int current = 0;
 
         while (t < duration)
         {
             t += Time.deltaTime;
 
-            float p = t / duration; 
+            float p = t / duration;
             current = Mathf.RoundToInt(Mathf.Lerp(0, target, p));
 
             text.text = $"{prefix} ({current} coins)";
@@ -135,33 +140,41 @@ public class RatingFlow : MonoBehaviour
 
         text.text = $"{prefix} ({target} coins)";
 
-        //adds the coins from previous round with the coins already collected 
+        // adds coins to global system
         GameData.Instance.coins += target;
 
-
-        //adds a count once this code has run (used to count the counts)
+        // each completed coroutine contributes to unlock
         countsCompleted++;
 
-        Debug.Log("Count completed, countsCompleted = " + countsCompleted);
-        //only shows button once both couns have been completed
+        TryShowShopButton();
+    }
+
+    //SHOP BUTTON CHECK 
+
+    void TryShowShopButton()
+    {
+        // unlock after both players finished counting
         if (countsCompleted >= 2)
         {
-            goToShopButton.gameObject.SetActive(true);
+         
+                goToShopButton.gameObject.SetActive(true);
+            
         }
     }
 
-    // PANEL SWITCHING
+    //panel switch
+
     IEnumerator SwitchPanels(GameObject from, GameObject to)
     {
         yield return Fade(1);
 
-        from.SetActive(false);
-        to.SetActive(true);
+        // null checks prevent UI crash bugs
+        if (from != null) from.SetActive(false);
+        if (to != null) to.SetActive(true);
 
         yield return Fade(0);
     }
 
-    // FADE
     IEnumerator Fade(float targetAlpha)
     {
         float start = fadeImage.color.a;

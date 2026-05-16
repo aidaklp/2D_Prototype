@@ -4117,7 +4117,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 962017041}
   sentences:
   - dialogue 3 test
-  dialogueSpeed: 0
+  dialogueSpeed: 0.1
   ratingFlow: {fileID: 1606972382}
 --- !u!1 &1004857829
 GameObject:
@@ -4372,7 +4372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1084472532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4412,7 +4412,7 @@ MonoBehaviour:
   sentences:
   - dialogue 2 test
   dialogueSpeed: 0.1
-  MoneyGenerationPanel: {fileID: 1107935355}
+  MoneyGenerationPanel: {fileID: 933629859}
 --- !u!1 &1092941411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4517,7 +4517,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107299698}
-  - component: {fileID: 1107299697}
   - component: {fileID: 1107299699}
   m_Layer: 0
   m_Name: GameManager
@@ -4526,23 +4525,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1107299697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107299696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e51fce7bf452944acecce6bc0b0e9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue2
-  dialogueText: {fileID: 86040625}
-  dialoguePanel: {fileID: 161932008}
-  sentences: []
-  dialogueSpeed: 0
-  MoneyGenerationPanel: {fileID: 933629859}
 --- !u!4 &1107299698
 Transform:
   m_ObjectHideFlags: 0

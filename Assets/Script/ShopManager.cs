@@ -75,7 +75,10 @@ public class ShopManager : MonoBehaviour
             GameData.Instance.coins -= shopItems[ButtonRef.GetComponent<ItemInfo>().ItemID, 1];
 
             //updates the coins amount after purchase
-            CoinsTXT.text = "Coins:" + GameData.Instance.coins.ToString();
+            if (CoinsTXT != null && GameData.Instance != null)
+            {
+                CoinsTXT.text = "Coins: " + GameData.Instance.coins.ToString();
+            }
 
 
             //saves as bought
