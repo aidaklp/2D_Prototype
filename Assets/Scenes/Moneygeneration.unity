@@ -472,13 +472,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40efea710a9b85e4aaa69ea237d726f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue3
-  DialogueText3: {fileID: 451360600}
-  DialoguePanel3: {fileID: 962017041}
+  dialogueText: {fileID: 451360600}
+  dialoguePanel: {fileID: 53339190}
+  sentences:
+  - dialogue 3 test
+  dialogueSpeed: 0
   ratingFlow: {fileID: 1606972382}
-  Sentences:
-  - Yeaaah, this is the good stuff!
-  - "How about you upload it to Spotify and see how you\u2019ve done?"
-  DialogueSpeed: 0.05
 --- !u!1 &54703357
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +971,7 @@ GameObject:
   - component: {fileID: 161932009}
   - component: {fileID: 161932011}
   - component: {fileID: 161932010}
+  - component: {fileID: 161932012}
   m_Layer: 5
   m_Name: DialogueBox2
   m_TagString: Untagged
@@ -1038,6 +1038,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161932008}
   m_CullTransparentMesh: 1
+--- !u!114 &161932012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161932008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e51fce7bf452944acecce6bc0b0e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue2
+  dialogueText: {fileID: 86040625}
+  dialoguePanel: {fileID: 161932008}
+  sentences:
+  - dialogue 2 test
+  dialogueSpeed: 0
+  MoneyGenerationPanel: {fileID: 933629859}
 --- !u!1 &184736862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1606,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -413, y: 448.27}
+  m_SizeDelta: {x: 0, y: 448.27}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &337849396
 MonoBehaviour:
@@ -2527,7 +2545,7 @@ RectTransform:
   m_Father: {fileID: 2131974513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4520,13 +4538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e51fce7bf452944acecce6bc0b0e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue2
-  DialogueText2: {fileID: 86040625}
-  DialoguePanel2: {fileID: 1084472531}
+  dialogueText: {fileID: 86040625}
+  dialoguePanel: {fileID: 161932008}
+  sentences: []
+  dialogueSpeed: 0
   MoneyGenerationPanel: {fileID: 933629859}
-  Sentences:
-  - 'Now rate the contribution of the other player! '
-  - Be careful as this may have future consequences
-  DialogueSpeed: 0.05
 --- !u!4 &1107299698
 Transform:
   m_ObjectHideFlags: 0
@@ -6203,7 +6219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1430282319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7752,9 +7768,9 @@ RectTransform:
   - {fileID: 2071183958}
   m_Father: {fileID: 337849395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 297, y: -224.135}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772432256
@@ -8171,9 +8187,9 @@ RectTransform:
   m_Father: {fileID: 1430460990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 3}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1900234520
 MonoBehaviour:
@@ -8262,9 +8278,9 @@ RectTransform:
   - {fileID: 1092941412}
   m_Father: {fileID: 337849395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -224.135}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906193322
