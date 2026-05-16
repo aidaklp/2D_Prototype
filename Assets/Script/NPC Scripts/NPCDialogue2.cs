@@ -3,21 +3,20 @@ using System.Collections;
 
 public class NPCDialogue2 : NPCDialogueBase
 {
-    // panel that appears after dialogue ends
     public GameObject MoneyGenerationPanel;
 
     protected override void EndDialogue()
     {
-        dialoguePanel.SetActive(false);
-
-        StartCoroutine(ShowNext());
+        StartCoroutine(EndRoutine());
     }
 
-    IEnumerator ShowNext()
+    IEnumerator EndRoutine()
     {
+        // wait one frame so Unity doesn't break coroutine blah blah
         yield return null;
 
-        // show next gameplay screen
+        dialoguePanel.SetActive(false);
+
         MoneyGenerationPanel.SetActive(true);
     }
 }
