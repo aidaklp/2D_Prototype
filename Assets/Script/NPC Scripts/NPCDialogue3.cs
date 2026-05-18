@@ -32,7 +32,7 @@ public class NPCDialogue3: MonoBehaviour
 
     private bool hasEnded = false;
 
-   
+
 
     private void OnEnable()
     {

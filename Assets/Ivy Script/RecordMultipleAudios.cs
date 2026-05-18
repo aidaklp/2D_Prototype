@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement; 
+using UnityEngine.UI;
 
 public class RecordMultipleAudios : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class RecordMultipleAudios : MonoBehaviour
 
     public enum GamePhase
     {
+        MetronomeInput,// added by Sienna
         Dialogue1,// added by siennaS
         Player1Recording,
         Player2Recording,
@@ -73,7 +74,18 @@ public class RecordMultipleAudios : MonoBehaviour
 
     [Header("Redo Tracking")]
     private bool player1UsedRedo = false;
-    private bool player2UsedRedo = false; 
+    private bool player2UsedRedo = false;
+
+    [Header("Metronome Player input")]
+    // stores the metronome input panel so  it can be reffrenced 
+    [SerializeField] private GameObject metronomeInputPanel;
+
+// store the TMP gameobject which will be where the player types
+    [SerializeField] private TMP_InputField bpmInputField;
+
+    //stores the bpm button game object
+    [SerializeField] private Button confirmBPMButton;
+
 
 
     //refrence to the metronome manager script
@@ -84,7 +96,7 @@ public class RecordMultipleAudios : MonoBehaviour
     // ─────────────────────────────────────────────
 
     private void Start()
-    {
+    { 
         //restes both recording to null (so deletes the recording) when scene  starts (so can reset when new round start)
         player1Clip = null;
         player2Clip = null;
@@ -94,9 +106,11 @@ public class RecordMultipleAudios : MonoBehaviour
         //sets player used redo to false when scene starts
         player1UsedRedo = false;
         player2UsedRedo = false;
+
         // makes sure it starts on the right phase
         currentPhase = GamePhase.Dialogue1;
         ShowPhaseUI(GamePhase.Dialogue1); //edited by sienna
+
 
         // resets metronome
         if (metronomeManager != null)
@@ -104,6 +118,7 @@ public class RecordMultipleAudios : MonoBehaviour
             metronomeManager.enabled = false;
         }
 
+      
         //hides the redo button when the scene loads (so they stay hidden when the item isnt bought
         player1RedoButton?.gameObject.SetActive(false);
         player2RedoButton?.gameObject.SetActive(false);
@@ -120,45 +135,13 @@ public class RecordMultipleAudios : MonoBehaviour
         playBothButton?.onClick.AddListener(PlayBothRecordings);
         stopBothButton?.onClick.AddListener(StopBothRecordings);
 
-        
+        //Wriying up the confirm inpu BPm button
+        confirmBPMButton?.onClick.AddListener(ConfirmBPMAndAdvance);
+
+
     }
 
-    // ─────────────────────────────────────────────
-    // Original Methods (unchanged)
-    // ─────────────────────────────────────────────
 
-    //Method for starting recording
-    public void StartRecording()
-    {
-        // this is to pick the default microphone
-        string device = Microphone.devices[0];
-
-        // quality of the recording
-        int sampleRate = 44100;
-
-        // how long we want the recording to be 
-        int lengthSec = 35;
-
-        // defines our recorded clip
-        recordedClip = Microphone.Start(device, false, lengthSec, sampleRate);
-    }
-
-    //Method for paying recording 
-    public void PlayRecording()
-    {
-        //giving the audio source the recorded clip
-        audioSource.clip = recordedClip;
-
-        //calling the play method
-        audioSource.Play();
-    }
-
-    //Method to stop recording
-    public void StopRecording()
-    {
-        //stops microphone  
-        Microphone.End(null);
-    }
 
     //COUNTDOWN
     private IEnumerator CountdownThenStart(System.Action startRecordingAction,
@@ -540,6 +523,9 @@ public class RecordMultipleAudios : MonoBehaviour
     /// </summary>
     private void ShowPhaseUI(GamePhase phase)
     {
+        //sets the ui for the metronome panell
+        metronomeInputPanel?.SetActive(phase == GamePhase.MetronomeInput);
+
         player1RecordingPanel?.SetActive(phase == GamePhase.Player1Recording);
         player2RecordingPanel?.SetActive(phase == GamePhase.Player2Recording);
         finalPlaybackPanel?.SetActive(phase == GamePhase.FinalPlayback);
@@ -592,10 +578,29 @@ public class RecordMultipleAudios : MonoBehaviour
 
     public void DialogueFinishedAndAdvance()
     {
-        currentPhase = GamePhase.Player1Recording;
-        ShowPhaseUI(GamePhase.Player1Recording);
+        if (GameData.Instance.hasMetronome)
+        {
+            currentPhase = GamePhase.MetronomeInput;
+            ShowPhaseUI(GamePhase.MetronomeInput);
+        }
+        else
+        {
+            currentPhase = GamePhase.Player1Recording;
+            ShowPhaseUI(GamePhase.Player1Recording);
+        }
     }
 
+    public void ConfirmBPMAndAdvance()
+    {
+        //converts whatever the player typed into a float and returns true if succeded and stores the result in newBPM
+        // the checks if the new bpm is above 0 and then allows the plaer to continue
+        if (float.TryParse(bpmInputField.text, out float newBPM) && newBPM > 0)
+        {
+            metronomeManager.BPM = newBPM;
+            currentPhase = GamePhase.Player1Recording;
+            ShowPhaseUI(GamePhase.Player1Recording);
+        }
+    }
 
 
 }

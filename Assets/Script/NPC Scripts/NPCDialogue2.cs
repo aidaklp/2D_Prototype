@@ -30,14 +30,13 @@ public class NPCDialogue2 : MonoBehaviour
 
     private bool hasStarted = false;
 
-    private bool hasEnded = false; 
+    private bool hasEnded = false;
 
     private void Start()
     {
         DialoguePanel2.SetActive(true);
         NextSentence();
-        hasStarted =true;
-
+        hasStarted = true;
     }
 
     private void Update()

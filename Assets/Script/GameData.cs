@@ -25,7 +25,8 @@ public class GameData : MonoBehaviour
     //used to store the current round 
     public int currentRound = 1;
 
-
+    //sets the first round to be true when the game is started 
+    public bool isFirstRound = true;
 
 
 

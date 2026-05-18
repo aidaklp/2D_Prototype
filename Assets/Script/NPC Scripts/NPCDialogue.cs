@@ -25,7 +25,9 @@ public class NPCDialogue1 : MonoBehaviour
     private bool isTyping = false;
 
     // will allow a check for the first sentence to be triggered before the next
-    private bool hasStarted = false; 
+    private bool hasStarted = false;
+
+
 
     private void Update()
     {
