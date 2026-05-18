@@ -42,6 +42,13 @@ public class RecordMultipleAudios : MonoBehaviour
     [SerializeField] private AudioSource player2AudioSource;
 
     // ── Optional UI references (assign in Inspector or leave blank) ──
+
+    [Header("Countdown Animation")]
+    [SerializeField] private SimpleFrameAnimation player1CountdownAnim;
+    [SerializeField] private SimpleFrameAnimation player2CountdownAnim;
+    [SerializeField] private GameObject player1CountdownObject;
+    [SerializeField] private GameObject player2CountdownObject;
+
     [Header("UI – Player 1 Recording Screen")]
     [SerializeField] private GameObject player1RecordingPanel;
     [SerializeField] private Button player1StartRecordingButton;
@@ -153,15 +160,46 @@ public class RecordMultipleAudios : MonoBehaviour
         Microphone.End(null);
     }
 
+    //COUNTDOWN
+    private IEnumerator CountdownThenStart(System.Action startRecordingAction,
+                                       SimpleFrameAnimation anim,
+                                       GameObject animObject)
+    {
+        if (animObject != null)
+            animObject.SetActive(true);
+
+        if (anim != null)
+            anim.PlayAnimation();
+
+        // 3 seconds total countdown 
+        yield return new WaitForSeconds(3f);
+
+        if (animObject != null)
+            animObject.SetActive(false);
+
+        startRecordingAction?.Invoke();
+    }
+
     // ─────────────────────────────────────────────
     // Player 1 Recording
     // ─────────────────────────────────────────────
 
     /// <summary>Starts a fresh recording for Player 1.</summary>
+    /// 
     public void StartPlayer1Recording()
     {
         if (currentPhase != GamePhase.Player1Recording) return;
 
+        // NEW: start countdown instead of immediate recording
+        StartCoroutine(
+            CountdownThenStart(() => BeginPlayer1Recording(),
+            player1CountdownAnim,
+            player1CountdownObject)
+        );
+    }
+
+    private void BeginPlayer1Recording()
+    {
         string device = Microphone.devices[0];
 
         // Start the actual recording that gets saved
@@ -178,13 +216,13 @@ public class RecordMultipleAudios : MonoBehaviour
         player1StartRecordingButton?.gameObject.SetActive(false);
         player1StopRecordingButton?.gameObject.SetActive(true);
         player1ConfirmButton?.gameObject.SetActive(false);
-
         //checks whether the players have purchased a metronome and sets it to true if that have which will indicate the metronome script to start
         if (GameData.Instance.hasMetronome)
         {
             metronomeManager.enabled = true;
         }
     }
+
 
     //method for redo item
     public void Player1Redo()
@@ -292,10 +330,20 @@ public class RecordMultipleAudios : MonoBehaviour
     // ─────────────────────────────────────────────
 
     /// <summary>Starts a fresh recording for Player 2.</summary>
+    /// 
     public void StartPlayer2Recording()
     {
         if (currentPhase != GamePhase.Player2Recording) return;
 
+        StartCoroutine(
+            CountdownThenStart(() => BeginPlayer2Recording(),
+            player2CountdownAnim,
+            player2CountdownObject)
+        );
+    }
+
+    private void BeginPlayer2Recording()
+    {
         string device = Microphone.devices[0];
 
         // Start the actual recording that gets saved
