@@ -34,10 +34,17 @@ public class NPCDialogue2 : MonoBehaviour
 
     private void Start()
     {
+        // Skip intro dialogue on round 2+
+        if (GameData.Instance.currentRound > 1)
+        {
+            DialoguePanel2.SetActive(false);
+            MoneyGenerationPanel.SetActive(true);
+            return;
+        }
+
         DialoguePanel2.SetActive(true);
         NextSentence();
-        hasStarted =true;
-
+        hasStarted = true;
     }
 
     private void Update()

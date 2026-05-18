@@ -31,13 +31,25 @@ public class NPCDialogue1 : MonoBehaviour
     {
         if (recordMultipleAudios.currentPhase == RecordMultipleAudios.GamePhase.Dialogue1)
         {
-            if (!hasStarted) {
-                hasStarted = true;
-                NextSentence();
-                    }
+            if (GameData.Instance == null || GameData.Instance.currentRound <= 1)
 
-            if (Keyboard.current.fKey.wasPressedThisFrame) {
-                NextSentence();
+            {
+                if (!hasStarted)
+                {
+                    hasStarted = true;
+                    NextSentence();
+                }
+
+                if (Keyboard.current.fKey.wasPressedThisFrame)
+                {
+                    NextSentence();
+                }
+            }
+            else
+            {
+                DialoguePanel1.SetActive(false);
+                recordMultipleAudios.DialogueFinishedAndAdvance();
+                return;
             }
         }
     }
