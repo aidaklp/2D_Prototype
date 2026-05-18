@@ -274,6 +274,12 @@ public class RecordMultipleAudios : MonoBehaviour
         player1AudioSource.Stop();
         player1AudioSource.loop = false;
 
+        //stops metronome when player stops recording 
+        if (metronomeManager != null)
+        {
+            metronomeManager.enabled = false;
+        }
+
         SetText(player1StatusText, "Recording saved! Press Confirm when you're ready.");
         player1StopRecordingButton?.gameObject.SetActive(false);
         player1ConfirmButton?.gameObject.SetActive(true);
@@ -294,11 +300,7 @@ public class RecordMultipleAudios : MonoBehaviour
             return;
         }
 
-        //stops metronome when player stops recording 
-        if (metronomeManager != null)
-        {
-            metronomeManager.enabled = false;
-        } 
+       
     }
 
     /// <summary>
@@ -380,6 +382,14 @@ public class RecordMultipleAudios : MonoBehaviour
         player2AudioSource.Stop();
         player2AudioSource.loop = false;
 
+
+        //stops metronome when player stops recording 
+        if (metronomeManager != null)
+        {
+            metronomeManager.enabled = false;
+        }
+
+
         SetText(player2StatusText, "Recording saved! Press Confirm when you're ready.");
         player2StopRecordingButton?.gameObject.SetActive(false);
         player2ConfirmButton?.gameObject.SetActive(true);
@@ -394,17 +404,12 @@ public class RecordMultipleAudios : MonoBehaviour
             //adds and removes listeners
 
             player2ConfirmButton.onClick.RemoveAllListeners();
-            player2ConfirmButton.onClick.AddListener(Player1SkipRedo);
+            player2ConfirmButton.onClick.AddListener(Player2SkipRedo);
 
             //waits for the player to decide
             return;
         }
 
-        //stops metronome when player stops recording 
-        if (metronomeManager != null)
-        {
-            metronomeManager.enabled = false;
-        }
     }
 
     //method for redo item
