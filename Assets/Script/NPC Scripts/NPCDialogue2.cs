@@ -59,6 +59,12 @@ public class NPCDialogue2 : MonoBehaviour
             
 
         }
+
+        //checks if e is pressed and if so calls on the Skip all dialogue method
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            SkipAllDialogue();
+        }
     }
 
     void NextSentence()
@@ -96,7 +102,25 @@ public class NPCDialogue2 : MonoBehaviour
         isTyping = false; 
     }
 
-    
+    void SkipAllDialogue()
+    {
+        //stops all coroutines but used to stop the write sentence coroutine
+        StopAllCoroutines();
+        //sets is typing back to false
+        isTyping = false;
+
+        //this jumps the index to the end of the array to now tll the code that there are not more sentences left to type  out 
+        Index = Sentences.Length;
+
+        //sets hasEnded to true
+        hasEnded = true;
+        //closes the dialogua pannel
+        DialoguePanel2.SetActive(false);
+      //changes the panel to the money generation panel
+      MoneyGenerationPanel.SetActive(true) ;
+    }
+
+
 }
 
 
