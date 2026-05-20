@@ -41,6 +41,11 @@ public class NPCDialogue1 : MonoBehaviour
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 NextSentence();
             }
+            //checks if e is pressed and if so calls on the Skip all dialogue method
+            if (Keyboard.current.eKey.wasPressedThisFrame)
+            {
+                SkipAllDialogue();
+            }
         }
     }
 
@@ -82,6 +87,21 @@ public class NPCDialogue1 : MonoBehaviour
 
     void OnDialogueFinished()
     {
+        recordMultipleAudios.DialogueFinishedAndAdvance();
+    }
+
+    void SkipAllDialogue()
+    {
+        //stops all coroutines but used to stop the write sentence coroutine
+        StopAllCoroutines ();
+        //sets is typing back to false
+        isTyping = false;
+
+        //this jumps the index to the end of the array to now tll the code that there are not more sentences left to type  out 
+        Index = Sentences.Length;
+        //closes the dialogua pannel
+        DialoguePanel1.SetActive(false);
+        //reffrences the dialogue finished and advance method from the record multiple audios script
         recordMultipleAudios.DialogueFinishedAndAdvance();
     }
 }
