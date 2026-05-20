@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e147d868df136c04ba77ac16c7ba3020
+guid: 3f97ee17adac30f45996065fd36de9d2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3288336483539412134
-    second: WhatsApp Image 2026-05-10 at 11.36.04 PM_0
+      213: 8410757352683566047
+    second: cherries_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -178,45 +178,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WhatsApp Image 2026-05-10 at 11.36.04 PM_0
+      name: cherries_0
       rect:
         serializedVersion: 2
-        x: 499
-        y: 520
-        width: 1039
-        height: 1036
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6a4e2530c9482ad20800000000000000
-      internalID: 3288336483539412134
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WhatsApp Image 2026-05-10 at 11.36.04 PM_1
-      rect:
-        serializedVersion: 2
-        x: 441
-        y: 13
-        width: 32
-        height: 326
+        x: 416
+        y: 399
+        width: 224
+        height: 211
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 46b6b0138fb644443aff5a63b674cb90
-      internalID: 1662661432
+      spriteID: fd375ba004309b470800000000000000
+      internalID: 8410757352683566047
       vertices: []
       indices: 
       edges: []
@@ -225,7 +203,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a5f105a96b32adf4596cf439b67f8718
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -235,8 +213,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WhatsApp Image 2026-05-10 at 11.36.04 PM_0: 3288336483539412134
-      WhatsApp Image 2026-05-10 at 11.36.04 PM_1: 1662661432
+      cherries_0: 8410757352683566047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
