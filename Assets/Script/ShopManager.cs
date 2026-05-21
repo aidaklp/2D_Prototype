@@ -32,11 +32,11 @@ public class ShopManager : MonoBehaviour
 
         //setting up the array by making item ID's and it starts as one as i plan to save the system and using the array zero can break in the future
         shopItems[0, 0] = 1;// item 1 iD
-        shopItems [0, 1] = 3;// item 1 price
+        shopItems [0, 1] = 30;// item 1 price
 
        
         shopItems[1, 0] = 2;// item 2 ID
-        shopItems[1, 1] = 5;// Item 2 price
+        shopItems[1, 1] = 50;// Item 2 price
 
 
 
