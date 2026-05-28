@@ -741,7 +741,6 @@ GameObject:
   - component: {fileID: 401412751}
   - component: {fileID: 401412753}
   - component: {fileID: 401412752}
-  - component: {fileID: 401412754}
   m_Layer: 5
   m_Name: GenerateRequirementsText
   m_TagString: Untagged
@@ -788,7 +787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Pull the lever for guidelines!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -854,7 +853,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -128.97852, y: -6.72937, z: -206.89185, w: 0}
+  m_margin: {x: 2.4851074, y: -6.72937, z: -0.30651855, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -868,20 +867,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401412750}
   m_CullTransparentMesh: 1
---- !u!114 &401412754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401412750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7784a8bf6217940a472d361b609870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  englishText: Pull the lever for guidelines!
-  dutchText: Trek aan de hendel voor de richtlijnen!
 --- !u!1 &403819153
 GameObject:
   m_ObjectHideFlags: 0

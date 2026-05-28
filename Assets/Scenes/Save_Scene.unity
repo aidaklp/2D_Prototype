@@ -4772,7 +4772,6 @@ GameObject:
   - component: {fileID: 746500574}
   - component: {fileID: 746500576}
   - component: {fileID: 746500575}
-  - component: {fileID: 746500577}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4796,8 +4795,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 401.35352, y: -87}
-  m_SizeDelta: {x: 720.5368, y: 62.8931}
+  m_AnchoredPosition: {x: 498, y: -87}
+  m_SizeDelta: {x: 527.2437, y: 62.8931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746500575
 MonoBehaviour:
@@ -4819,7 +4818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '[Press F to continue]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4885,7 +4884,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -13.782349, y: 8.612337, z: 30.438782, w: 0}
+  m_margin: {x: -13.782349, y: 8.612337, z: -17.440735, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4899,20 +4898,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746500573}
   m_CullTransparentMesh: 1
---- !u!114 &746500577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746500573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7784a8bf6217940a472d361b609870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  englishText: '[Press F to continue]'
-  dutchText: '[Druk op F om verder te gaan]'
 --- !u!1 &754195142
 GameObject:
   m_ObjectHideFlags: 0

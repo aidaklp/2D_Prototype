@@ -814,7 +814,6 @@ GameObject:
   m_Component:
   - component: {fileID: 125371319}
   - component: {fileID: 125371321}
-  - component: {fileID: 125371322}
   - component: {fileID: 125371320}
   m_Layer: 5
   m_Name: Text (TMP) (1)
@@ -862,7 +861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Player 2, rate Player 1''s sound:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -942,20 +941,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125371318}
   m_CullTransparentMesh: 1
---- !u!114 &125371322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125371318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7784a8bf6217940a472d361b609870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  englishText: 'Player 2, rate Player 1''s sound:'
-  dutchText: 'Speler 2, beoordeel het geluid van speler 1:'
 --- !u!1 &161932008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,7 +3372,6 @@ GameObject:
   - component: {fileID: 747190587}
   - component: {fileID: 747190589}
   - component: {fileID: 747190588}
-  - component: {fileID: 747190590}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3434,7 +3418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Player 1, rate Player 2''s sound:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3514,20 +3498,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747190586}
   m_CullTransparentMesh: 1
---- !u!114 &747190590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747190586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7784a8bf6217940a472d361b609870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocalizedText
-  englishText: 'Player 1, rate Player 2''s sound:'
-  dutchText: 'Speler 1, beoordeel het geluid van speler 2:'
 --- !u!1 &761860045
 GameObject:
   m_ObjectHideFlags: 0
