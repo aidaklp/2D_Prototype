@@ -4909,7 +4909,6 @@ GameObject:
   - component: {fileID: 754195144}
   - component: {fileID: 754195143}
   - component: {fileID: 754195145}
-  - component: {fileID: 754195146}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4991,28 +4990,9 @@ MonoBehaviour:
   DialogueText1: {fileID: 28530202}
   DialoguePanel1: {fileID: 1986371214}
   Sentences:
-  - 
-  - 
-  DialogueSpeed: 0.01
---- !u!114 &754195146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 754195142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de92fbd06438e5541ab946b4baa88ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueLocalization
-  englishSentences:
   - 'Hey! You two, how about making some quick cash? '
   - Read what the machine says and make a song out of it.
-  dutchSentences:
-  - "H\xE9! Jullie twee, zin om snel wat geld te verdienen?"
-  - Lees wat de machine zegt en maak er een liedje van.
-  dialogueScript: {fileID: 754195145}
+  DialogueSpeed: 0.01
 --- !u!1 &773277632
 GameObject:
   m_ObjectHideFlags: 0
