@@ -114,14 +114,30 @@ public class ShopManager : MonoBehaviour
         CoinsTXT.text = "Coins: " + GameData.Instance.coins.ToString();
     }
 
+    
     // next round method
     public void NextRound()
     {
+        // store how many items were bought this round
+        int itemsBought = 0;
+
+        for (int i = 0; i < itemPurchased.Length; i++)
+        {
+            if (itemPurchased[i])
+            {
+                itemsBought++;
+            }
+        }
+
+        GameData.Instance.previousRoundItemsBought = itemsBought;
+
         //adds a game round everytime this is calles
         GameData.Instance.currentRound++;
+
         // calls the reset round data method
         GameData.Instance.ResetRoundData();
+
         //changes scene back to generation scene
-        SceneManager.LoadScene("GeneratingScene"); 
+        SceneManager.LoadScene("GeneratingScene");
     }
 }

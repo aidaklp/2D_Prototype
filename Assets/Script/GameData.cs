@@ -21,6 +21,9 @@ public class GameData : MonoBehaviour
     //keeps track when redo item has been bought
     public bool hasRedo = false;
 
+    //to give players an item bonus at the end-of-round rating:
+    public int previousRoundItemsBought = 0;
+
     [Header("Rounds")]
     //used to store the current round 
     public int currentRound = 1;
