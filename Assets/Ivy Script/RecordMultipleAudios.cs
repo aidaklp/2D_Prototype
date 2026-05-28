@@ -86,17 +86,46 @@ public class RecordMultipleAudios : MonoBehaviour
     //stores the bpm button game object
     [SerializeField] private Button confirmBPMButton;
 
+    [Header("Echo Activation (Per Player Session)")]
+    private bool player1EchoEnabled = false;
+    private bool player2EchoEnabled = false;
+
+    [Header("Echo Filters")]
+    private AudioEchoFilter player1Echo;
+    private AudioEchoFilter player2Echo;
+
+    [SerializeField] private Button player1EchoButton;
+    [SerializeField] private Button player2EchoButton;
+
+    [SerializeField] private TextMeshProUGUI player1EchoLabel;
+    [SerializeField] private TextMeshProUGUI player2EchoLabel;
+
+    [Header("Pitch Activation (Per Player Session)")]
+    private bool player1PitchEnabled = false;
+    private bool player2PitchEnabled = false;
+
+    private bool player1PitchUp = true;
+    private bool player2PitchUp = true;
+
+    [Header("Pitch Filters")]
+    [SerializeField] private Button player1PitchUpButton;
+    [SerializeField] private Button player1PitchDownButton;
+    [SerializeField] private TextMeshProUGUI player1PitchLabel;
+
+    [SerializeField] private Button player2PitchUpButton;
+    [SerializeField] private Button player2PitchDownButton;
+    [SerializeField] private TextMeshProUGUI player2PitchLabel;
 
 
     //refrence to the metronome manager script
-    [SerializeField] private MetronomeManager metronomeManager; 
+    [SerializeField] private MetronomeManager metronomeManager;
 
     // ─────────────────────────────────────────────
     // Unity Lifecycle
     // ─────────────────────────────────────────────
 
     private void Start()
-    { 
+    {
         //restes both recording to null (so deletes the recording) when scene  starts (so can reset when new round start)
         player1Clip = null;
         player2Clip = null;
@@ -118,7 +147,7 @@ public class RecordMultipleAudios : MonoBehaviour
             metronomeManager.enabled = false;
         }
 
-      
+
         //hides the redo button when the scene loads (so they stay hidden when the item isnt bought
         player1RedoButton?.gameObject.SetActive(false);
         player2RedoButton?.gameObject.SetActive(false);
@@ -138,7 +167,67 @@ public class RecordMultipleAudios : MonoBehaviour
         //Wriying up the confirm inpu BPm button
         confirmBPMButton?.onClick.AddListener(ConfirmBPMAndAdvance);
 
+        UpdateEffectButtonVisibility();
 
+        //echo effect on/off
+        player1EchoButton?.onClick.AddListener(TogglePlayer1Echo);
+        player2EchoButton?.onClick.AddListener(TogglePlayer2Echo);
+
+
+        //pitch
+        player1PitchUpButton?.onClick.AddListener(() => SetPlayer1Pitch(true));
+        player1PitchDownButton?.onClick.AddListener(() => SetPlayer1Pitch(false));
+
+        player2PitchUpButton?.onClick.AddListener(() => SetPlayer2Pitch(true));
+        player2PitchDownButton?.onClick.AddListener(() => SetPlayer2Pitch(false));
+    }
+
+    //echos
+    public void TogglePlayer1Echo()
+    {
+        if (!GameData.Instance.hasEcho) return;
+        if (currentPhase != GamePhase.Player1Recording) return;
+
+        player1EchoEnabled = !player1EchoEnabled;
+
+        if (player1EchoLabel != null)
+            player1EchoLabel.text = player1EchoEnabled ? "Echo ON" : "Echo OFF";
+    }
+
+    public void TogglePlayer2Echo()
+    {
+        if (!GameData.Instance.hasEcho) return;
+        if (currentPhase != GamePhase.Player2Recording) return;
+
+        player2EchoEnabled = !player2EchoEnabled;
+
+        if (player2EchoLabel != null)
+            player2EchoLabel.text = player2EchoEnabled ? "Echo ON" : "Echo OFF";
+    }
+
+    //pitches
+    private void SetPlayer1Pitch(bool isUp)
+    {
+        if (!GameData.Instance.hasPitchShift) return;
+        if (currentPhase != GamePhase.Player1Recording) return;
+
+        player1PitchEnabled = true;
+        player1PitchUp = isUp;
+
+        if (player1PitchLabel != null)
+            player1PitchLabel.text = isUp ? "Pitch UP" : "Pitch DOWN";
+    }
+
+    private void SetPlayer2Pitch(bool isUp)
+    {
+        if (!GameData.Instance.hasPitchShift) return;
+        if (currentPhase != GamePhase.Player2Recording) return;
+
+        player2PitchEnabled = true;
+        player2PitchUp = isUp;
+
+        if (player2PitchLabel != null)
+            player2PitchLabel.text = isUp ? "Pitch UP" : "Pitch DOWN";
     }
 
 
@@ -204,6 +293,18 @@ public class RecordMultipleAudios : MonoBehaviour
         {
             metronomeManager.enabled = true;
         }
+
+        //toggl pitch
+        player1PitchEnabled = false;
+        player1PitchUp = true;
+
+        if (player1PitchLabel != null)
+            player1PitchLabel.text = "Pitch OFF";
+
+        //toggling echo
+        player1EchoEnabled = false;
+        if (player1EchoLabel != null)
+            player1EchoLabel.text = "Echo OFF";
     }
 
 
@@ -351,6 +452,18 @@ public class RecordMultipleAudios : MonoBehaviour
         {
             metronomeManager.enabled = true;
         }
+
+        //toggl pitch 
+        player2PitchEnabled = false;
+        player2PitchUp = true;
+
+        if (player2PitchLabel != null)
+            player2PitchLabel.text = "Pitch OFF";
+
+        //toggling echo
+        player2EchoEnabled = false;
+        if (player2EchoLabel != null)
+            player2EchoLabel.text = "Echo OFF";
     }
 
     /// <summary>Stops the Player 2 microphone and stores the clip.</summary>
@@ -463,6 +576,8 @@ public class RecordMultipleAudios : MonoBehaviour
     /// </summary>
     public void PlayBothRecordings()
     {
+        ApplyAudioEffects();
+
         if (player1Clip == null || player2Clip == null)
         {
             SetText(finalStatusText, "One or both recordings are missing!");
@@ -512,6 +627,73 @@ public class RecordMultipleAudios : MonoBehaviour
 
         source.Play();
     }
+
+    //-------------echo effects here
+    private void ApplyAudioEffects()
+    {
+        // reset pitch first
+        player1AudioSource.pitch = 1f;
+        player2AudioSource.pitch = 1f;
+
+        if (player1Echo != null)
+        {
+            Destroy(player1Echo);
+            player1Echo = null;
+        }
+
+        if (player2Echo != null)
+        {
+            Destroy(player2Echo);
+            player2Echo = null;
+        }
+
+        // PLAYER 1 echo
+        if (GameData.Instance.hasEcho && player1EchoEnabled)
+        {
+            player1Echo = player1AudioSource.gameObject.AddComponent<AudioEchoFilter>();
+            player1Echo.delay = 450;
+            player1Echo.decayRatio = 0.7f;
+            player1Echo.wetMix = 0.8f;
+        }
+
+        // PLAYER 2 echo
+        if (GameData.Instance.hasEcho && player2EchoEnabled)
+        {
+            player2Echo = player2AudioSource.gameObject.AddComponent<AudioEchoFilter>();
+            player2Echo.delay = 450;
+            player2Echo.decayRatio = 0.7f;
+            player2Echo.wetMix = 0.8f;
+        }
+
+        // PLAYER 1 pitch
+        if (GameData.Instance.hasPitchShift && player1PitchEnabled)
+        {
+            player1AudioSource.pitch = player1PitchUp ? 1.25f : 0.75f;
+        }
+
+        // PLAYER 2 pitch
+        if (GameData.Instance.hasPitchShift && player2PitchEnabled)
+        {
+            player2AudioSource.pitch = player2PitchUp ? 1.25f : 0.75f;
+        }
+    }
+
+    private void UpdateEffectButtonVisibility()
+    {
+        bool pitchOwned = GameData.Instance.hasPitchShift;
+
+        player1PitchUpButton?.gameObject.SetActive(pitchOwned);
+        player1PitchDownButton?.gameObject.SetActive(pitchOwned);
+
+        player2PitchUpButton?.gameObject.SetActive(pitchOwned);
+        player2PitchDownButton?.gameObject.SetActive(pitchOwned);
+
+        bool echoOwned = GameData.Instance.hasEcho;
+
+        player1EchoButton?.gameObject.SetActive(echoOwned);
+        player2EchoButton?.gameObject.SetActive(echoOwned);
+    }
+
 
     // ─────────────────────────────────────────────
     // UI Helpers

@@ -21,6 +21,10 @@ public class GameData : MonoBehaviour
     //keeps track when redo item has been bought
     public bool hasRedo = false;
 
+    ///// NEW ITEMS
+    public bool hasEcho = false;
+    public bool hasPitchShift = false;
+
     //to give players an item bonus at the end-of-round rating:
     public int previousRoundItemsBought = 0;
 

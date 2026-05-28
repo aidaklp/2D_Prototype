@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     //array for shop items and sets the amount of shop items and how many values with them 
-    public int[,] shopItems = new int [2,2];
-   
+    public int[,] shopItems = new int[4, 2];
 
-   //stores where the coins number will appear for each item
+
+    //stores where the coins number will appear for each item
     public TMP_Text CoinsTXT;
 
     // will track purchased items 
@@ -38,6 +38,12 @@ public class ShopManager : MonoBehaviour
         shopItems[1, 0] = 2;// item 2 ID
         shopItems[1, 1] = 50;// Item 2 price
 
+        // NEW
+        shopItems[2, 0] = 3; // Echo
+        shopItems[2, 1] = 50;
+
+        shopItems[3, 0] = 4; // Pitch shift
+        shopItems[3, 1] = 50;
 
 
         //Initialises the purchase tracker (one slot per item)
@@ -89,6 +95,7 @@ public class ShopManager : MonoBehaviour
 
 
             //checks and stores if the metronome item is bought
+            ///+new items
             if (itemIndex == 0)
             {
                 GameData.Instance.hasMetronome = true;
@@ -96,6 +103,14 @@ public class ShopManager : MonoBehaviour
             else if (itemIndex == 1)
             {
                 GameData.Instance.hasRedo = true;
+            }
+            else if (itemIndex == 2)
+            {
+                GameData.Instance.hasEcho = true;
+            }
+            else if (itemIndex == 3)
+            {
+                GameData.Instance.hasPitchShift = true;
             }
         }
         else
