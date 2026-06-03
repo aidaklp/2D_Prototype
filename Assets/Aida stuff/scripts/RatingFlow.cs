@@ -20,6 +20,7 @@ public class RatingFlow : MonoBehaviour
     public Image fadeImage;
     public TextMeshProUGUI player1Text;
     public TextMeshProUGUI player2Text;
+    public TextMeshProUGUI bonusText;
 
     [Header("Ratings")]
     public StarRatingUI player1RatingUI;
@@ -92,11 +93,17 @@ public class RatingFlow : MonoBehaviour
         int p1Coins = ToCoins(player1Rating);
         int p2Coins = ToCoins(player2Rating);
 
+        // bonus from previous round purchases
+        int bonusCoins = GameData.Instance.previousRoundItemsBought * 5;
+
         player1Text.gameObject.SetActive(true);
         player2Text.gameObject.SetActive(true);
+        bonusText.gameObject.SetActive(true);
 
         StartCoroutine(CountCoins(player1Text, "Player 2: " + player1Rating + " stars", p1Coins));
         StartCoroutine(CountCoins(player2Text, "Player 1: " + player2Rating + " stars", p2Coins));
+        StartCoroutine(CountCoins(bonusText, "Item Bonus:", bonusCoins));
+
 
         // background animation
         if (resultsAnimation != null)
