@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class VolumeUI : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class VolumeUI : MonoBehaviour
     public Slider masterSlider;
     public Slider micSlider;
 
-    public Text masterText;
-    public Text micText;
+    public TMP_Text masterText;
+    public TMP_Text micText;
 
     void Start()
     {
@@ -19,15 +20,16 @@ public class VolumeUI : MonoBehaviour
         micSlider.minValue = 0;
         micSlider.maxValue = AudioManager.Instance.maxBoost;
 
+        // saved values from AudioManager
         masterSlider.value = AudioManager.Instance.GetMaster();
         micSlider.value = AudioManager.Instance.GetMic();
 
+        // slider changes
         masterSlider.onValueChanged.AddListener(OnMaster);
         micSlider.onValueChanged.AddListener(OnMic);
 
         UpdateText();
 
-        panel.SetActive(false);
     }
 
     public void TogglePanel()
@@ -49,10 +51,10 @@ public class VolumeUI : MonoBehaviour
 
     void UpdateText()
     {
-        if (masterText)
+        if (masterText != null)
             masterText.text = Mathf.RoundToInt(masterSlider.value * 100) + "%";
 
-        if (micText)
+        if (micText != null)
             micText.text = Mathf.RoundToInt((micSlider.value / AudioManager.Instance.maxBoost) * 100) + "%";
     }
 }
