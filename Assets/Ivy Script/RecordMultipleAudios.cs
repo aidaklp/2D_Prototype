@@ -294,17 +294,20 @@ public class RecordMultipleAudios : MonoBehaviour
             metronomeManager.enabled = true;
         }
 
-        //toggl pitch
-        player1PitchEnabled = false;
-        player1PitchUp = true;
+        //keep any effect selections the player made before recording starts
+        if (!player1PitchEnabled)
+        {
+            player1PitchUp = true;
 
-        if (player1PitchLabel != null)
-            player1PitchLabel.text = "Pitch OFF";
+            if (player1PitchLabel != null)
+                player1PitchLabel.text = "Pitch OFF";
+        }
 
-        //toggling echo
-        player1EchoEnabled = false;
-        if (player1EchoLabel != null)
-            player1EchoLabel.text = "Echo OFF";
+        if (!player1EchoEnabled)
+        {
+            if (player1EchoLabel != null)
+                player1EchoLabel.text = "Echo OFF";
+        }
     }
 
 
@@ -453,17 +456,20 @@ public class RecordMultipleAudios : MonoBehaviour
             metronomeManager.enabled = true;
         }
 
-        //toggl pitch 
-        player2PitchEnabled = false;
-        player2PitchUp = true;
+        //keep any effect selections the player made before recording starts
+        if (!player2PitchEnabled)
+        {
+            player2PitchUp = true;
 
-        if (player2PitchLabel != null)
-            player2PitchLabel.text = "Pitch OFF";
+            if (player2PitchLabel != null)
+                player2PitchLabel.text = "Pitch OFF";
+        }
 
-        //toggling echo
-        player2EchoEnabled = false;
-        if (player2EchoLabel != null)
-            player2EchoLabel.text = "Echo OFF";
+        if (!player2EchoEnabled)
+        {
+            if (player2EchoLabel != null)
+                player2EchoLabel.text = "Echo OFF";
+        }
     }
 
     /// <summary>Stops the Player 2 microphone and stores the clip.</summary>
@@ -521,7 +527,7 @@ public class RecordMultipleAudios : MonoBehaviour
         player2Clip = null;
 
         //resets the Ui back to recording setting
-        SetText(player1StatusText, "Re-record your part!");
+        SetText(player2StatusText, "Re-record your part!");
         player2StartRecordingButton?.gameObject.SetActive(true);
         player2StopRecordingButton?.gameObject.SetActive(false);
         player2ConfirmButton?.gameObject.SetActive(false);
@@ -606,6 +612,18 @@ public class RecordMultipleAudios : MonoBehaviour
     {
         player1AudioSource?.Stop();
         player2AudioSource?.Stop();
+
+        //consumes the purchased effects so they must be bought again next round
+        GameData.Instance.hasEcho = false;
+        GameData.Instance.hasPitchShift = false;
+
+        //resets player selections
+        player1EchoEnabled = false;
+        player2EchoEnabled = false;
+
+        player1PitchEnabled = false;
+        player2PitchEnabled = false;
+
         SetText(finalStatusText, "Playback stopped.");
         SceneManager.LoadScene("Moneygeneration");
     }
@@ -682,6 +700,7 @@ public class RecordMultipleAudios : MonoBehaviour
     {
         bool pitchOwned = GameData.Instance.hasPitchShift;
 
+        //shows pitch controls only if pitch was purchased this round
         player1PitchUpButton?.gameObject.SetActive(pitchOwned);
         player1PitchDownButton?.gameObject.SetActive(pitchOwned);
 
@@ -690,6 +709,7 @@ public class RecordMultipleAudios : MonoBehaviour
 
         bool echoOwned = GameData.Instance.hasEcho;
 
+        //shows echo controls only if echo was purchased this round
         player1EchoButton?.gameObject.SetActive(echoOwned);
         player2EchoButton?.gameObject.SetActive(echoOwned);
     }
@@ -705,6 +725,9 @@ public class RecordMultipleAudios : MonoBehaviour
     /// </summary>
     private void ShowPhaseUI(GamePhase phase)
     {
+        //updates effect buttons whenever the phase changes
+        UpdateEffectButtonVisibility();
+
         //sets the ui for the metronome panell
         metronomeInputPanel?.SetActive(phase == GamePhase.MetronomeInput);
 
