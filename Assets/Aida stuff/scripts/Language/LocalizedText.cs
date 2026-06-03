@@ -26,7 +26,7 @@ public class LocalizedText : MonoBehaviour
 
     private void Update()
     {
-        // detect language change without needing other scripts
+        // detect language change 
         if (LanguageManager.Instance == null)
             return;
 
