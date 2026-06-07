@@ -44,6 +44,11 @@ public class StartMenu : MonoBehaviour
         CreditsPanel.SetActive(false);
     }
 
+    //method for quit game 
+   public void EndGame()
+    {
+        Application.Quit();
+    }
 
     private IEnumerator PlayCurtainAndStart()
     {
