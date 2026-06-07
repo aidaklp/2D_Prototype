@@ -14,6 +14,11 @@ public class StartMenu : MonoBehaviour
 
     private bool isStarting = false;
 
+    //sienna added this to store the credits panel game object
+    [Header("Credits")]
+    public GameObject CreditsPanel;
+
+
     void Start()
     {
         leftStartPos = leftCurtain.anchoredPosition;
@@ -25,6 +30,20 @@ public class StartMenu : MonoBehaviour
         if (isStarting) return;
         StartCoroutine(PlayCurtainAndStart());
     }
+
+    //method for opening credits panel 
+    public void OpenCredits()
+    {
+        //activates credits panel
+        CreditsPanel.SetActive(true);
+    }
+
+    //method to close credits panel
+    public void CloseCredits()
+    {
+        CreditsPanel.SetActive(false);
+    }
+
 
     private IEnumerator PlayCurtainAndStart()
     {
