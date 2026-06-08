@@ -13370,6 +13370,7 @@ GameObject:
   - component: {fileID: 1879490433}
   - component: {fileID: 1879490435}
   - component: {fileID: 1879490434}
+  - component: {fileID: 1879490436}
   m_Layer: 5
   m_Name: MetronomeInputPanel
   m_TagString: Untagged
@@ -13438,6 +13439,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879490432}
   m_CullTransparentMesh: 1
+--- !u!114 &1879490436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879490432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505780dbfdfa0de4db2c20036648e4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PanelMusic
+  musicClip: {fileID: 8300000, guid: 7602a43ce20f9014384a8341610be5de, type: 3}
+  volume: 0.5
+  loop: 1
 --- !u!1 &1887396719
 GameObject:
   m_ObjectHideFlags: 0
@@ -14186,6 +14202,7 @@ GameObject:
   - component: {fileID: 1986371215}
   - component: {fileID: 1986371217}
   - component: {fileID: 1986371216}
+  - component: {fileID: 1986371218}
   m_Layer: 5
   m_Name: DialoguePanel
   m_TagString: Untagged
@@ -14249,6 +14266,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986371214}
   m_CullTransparentMesh: 1
+--- !u!114 &1986371218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986371214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505780dbfdfa0de4db2c20036648e4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PanelMusic
+  musicClip: {fileID: 8300000, guid: 7602a43ce20f9014384a8341610be5de, type: 3}
+  volume: 0.5
+  loop: 1
 --- !u!1 &1998524096
 GameObject:
   m_ObjectHideFlags: 0
