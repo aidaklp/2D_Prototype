@@ -84,9 +84,9 @@ public class GeneratorScript : MonoBehaviour
     public void Generate()
     {
         //resets the boxes 
-        genreContainer.transform.localPosition = new Vector3(genreContainer.transform.localPosition.x, 1100);
-        BPMContainer.transform.localPosition = new Vector3(BPMContainer.transform.localPosition.x, 1100);
-        keyContainer.transform.localPosition = new Vector3(keyContainer.transform.localPosition.x, 1100);
+        genreContainer.transform.localPosition = new Vector3(genreContainer.transform.localPosition.x, 311);
+        BPMContainer.transform.localPosition = new Vector3(BPMContainer.transform.localPosition.x, 311);
+        keyContainer.transform.localPosition = new Vector3(keyContainer.transform.localPosition.x, 311);
 
         generateButton.interactable = false;
 
@@ -111,12 +111,13 @@ public class GeneratorScript : MonoBehaviour
 
     private string ReturnWord(TextAsset file)
     {
-        //generates ranom number and will search for the word associated with that number 
-        string[] lines = file.text.Split("\n");
-        
-        string line = lines[Random.Range(0, lines.Length - 1)];
+      
+        // splits the text file into lines and removes any empty ones
+        string[] lines = file.text.Split(new string[] { "\n", "\r\n" }, System.StringSplitOptions.RemoveEmptyEntries);
 
-        return line.Substring(0, line.Length - 1); 
+        string line = lines[Random.Range(0, lines.Length)];
+
+        return line.Trim(); 
 
     }
     private IEnumerator AnimateRoll(float delay, GameObject container, bool loadNextScene = false)
