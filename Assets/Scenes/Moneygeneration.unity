@@ -3749,8 +3749,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 962017042}
-  - component: {fileID: 962017044}
-  - component: {fileID: 962017043}
   m_Layer: 5
   m_Name: Dialogue3Panel
   m_TagString: Untagged
@@ -3781,45 +3779,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000038146973, y: 0}
   m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &962017043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962017041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de92fbd06438e5541ab946b4baa88ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueLocalization
-  englishSentences:
-  - Yeaaah, this is the good stuff!
-  - "How about you upload it to Spotify and see how you\u2019ve done?"
-  dutchSentences:
-  - Yeaaah, dit is 't goeie spul!
-  - Wat denk je ervan om het op Spotify te zetten, en te zien hoe goed je het hebt
-    gedaan?
-  dialogueScript: {fileID: 962017044}
---- !u!114 &962017044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962017041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40efea710a9b85e4aaa69ea237d726f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue3
-  DialogueText3: {fileID: 451360600}
-  DialoguePanel3: {fileID: 962017041}
-  ratingFlow: {fileID: 1606972382}
-  Sentences:
-  - 
-  - 
-  DialogueSpeed: 0.01
 --- !u!1 &1004857829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4894,6 +4853,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204152405}
   m_CullTransparentMesh: 1
+--- !u!1 &1218933551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1218933554}
+  - component: {fileID: 1218933553}
+  - component: {fileID: 1218933552}
+  m_Layer: 0
+  m_Name: dialogue3manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1218933552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218933551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de92fbd06438e5541ab946b4baa88ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueLocalization
+  englishSentences:
+  - Yeaaah, this is the good stuff!
+  - "How about you upload it to Spotify and see how you\u2019ve done?"
+  dutchSentences:
+  - Yeaaah, dit is 't goeie spul!
+  - Wat denk je ervan om het op Spotify te zetten, en te zien hoe goed je het hebt
+    gedaan?
+  dialogueScript: {fileID: 1218933553}
+--- !u!114 &1218933553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218933551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40efea710a9b85e4aaa69ea237d726f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue3
+  DialogueText3: {fileID: 451360600}
+  DialoguePanel3: {fileID: 962017041}
+  ratingFlow: {fileID: 1606972382}
+  Sentences:
+  - 
+  - 
+  DialogueSpeed: 0.01
+--- !u!4 &1218933554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218933551}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2336.7559, y: 346.6221, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231031216
 GameObject:
   m_ObjectHideFlags: 0
@@ -9932,3 +9963,4 @@ SceneRoots:
   - {fileID: 1046343676}
   - {fileID: 955607839}
   - {fileID: 2136835931}
+  - {fileID: 1218933554}
