@@ -5680,15 +5680,15 @@ MonoBehaviour:
   bpmInputField: {fileID: 188564337}
   confirmBPMButton: {fileID: 1575471726}
   player1EchoButton: {fileID: 1230623977}
-  player2EchoButton: {fileID: 0}
+  player2EchoButton: {fileID: 1488003242}
   player1EchoLabel: {fileID: 256328400}
-  player2EchoLabel: {fileID: 0}
+  player2EchoLabel: {fileID: 1736126678}
   player1PitchUpButton: {fileID: 1205876513}
   player1PitchDownButton: {fileID: 286223623}
   player1PitchLabel: {fileID: 140114020}
-  player2PitchUpButton: {fileID: 0}
-  player2PitchDownButton: {fileID: 0}
-  player2PitchLabel: {fileID: 0}
+  player2PitchUpButton: {fileID: 919216690}
+  player2PitchDownButton: {fileID: 1727153916}
+  player2PitchLabel: {fileID: 320782266}
   metronomeManager: {fileID: 962470490}
 --- !u!4 &754195144
 Transform:
@@ -6002,9 +6002,9 @@ MonoBehaviour:
   - {fileID: 81186463}
   - {fileID: 493661029}
   - {fileID: 614976332}
-  maxHeight: 5
+  maxHeight: 25
   smoothSpeed: 12
-  sensitivity: 400
+  sensitivity: 500
 --- !u!1 &788487806
 GameObject:
   m_ObjectHideFlags: 0
@@ -6202,7 +6202,7 @@ MonoBehaviour:
   - {fileID: 1677110758}
   - {fileID: 856631206}
   - {fileID: 773277633}
-  maxHeight: 2
+  maxHeight: 10
   smoothSpeed: 12
   sensitivity: 300
 --- !u!1 &806419831
@@ -6370,9 +6370,9 @@ MonoBehaviour:
   - {fileID: 404768233}
   - {fileID: 1444456059}
   - {fileID: 1934015907}
-  maxHeight: 5
+  maxHeight: 25
   smoothSpeed: 12
-  sensitivity: 400
+  sensitivity: 500
 --- !u!1 &842106337
 GameObject:
   m_ObjectHideFlags: 0
@@ -6988,7 +6988,7 @@ MonoBehaviour:
   - {fileID: 630895843}
   - {fileID: 892827821}
   - {fileID: 2021759725}
-  maxHeight: 2
+  maxHeight: 10
   sensitivity: 300
   smoothSpeed: 12
 --- !u!1 &892827820
