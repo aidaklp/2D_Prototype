@@ -288,13 +288,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -365, y: -92.953}
   m_SizeDelta: {x: 225.1922, y: 76.324}
-=======
-  m_AnchoredPosition: {x: -359, y: -128}
-  m_SizeDelta: {x: 200, y: 80}
->>>>>>> 92e01d9a6805e9a5d6437266d81f5bba6d325f26
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153756094
 MonoBehaviour:
@@ -3699,7 +3694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lead Artist and Programmer : Aida Calapod \n\nLead Programmer: Sienna
+  m_text: "Art Director and Programmer : Aida Calapod \n\nLead Programmer: Sienna
     Cheffert\n\nUI Artists : Ivana Zepeda and Stanislav Mihaylov\n\nMusic: Joost
     P, ten Cate (pCC)"
   m_isRightToLeft: 0
