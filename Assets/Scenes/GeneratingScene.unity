@@ -290,8 +290,6 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -359, y: -128}
   m_SizeDelta: {x: 200, y: 80}
-  m_AnchoredPosition: {x: -486, y: -92.953}
-  m_SizeDelta: {x: 273.5578, y: 76.324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153756094
 MonoBehaviour:
@@ -2644,6 +2642,7 @@ MonoBehaviour:
   keyContainer: {fileID: 554154126}
   generateButton: {fileID: 1942685941}
   musicalFont: {fileID: 11400000, guid: 203e331fabb4fef46a392a6bbfdb711c, type: 2}
+  textSize: 30
 --- !u!1 &1316142500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3698,7 +3697,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Art Director and Programmer : Aida Calapod \n\nLead Programmer: Sienna
     Cheffert\n\nUI Artists : Ivana Zepeda and Stanislav Mihaylov\n\nMusic: Joost
-    P, ten Cate (pCC)\nDutch Translation: Jacky Visser"
+    P, ten Cate (pCC)\nDutch Translation: Jacky Visser (GTV2F)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53f35f0843ae73d44add242953ba6c00, type: 2}
   m_sharedMaterial: {fileID: -5490189617820160976, guid: 53f35f0843ae73d44add242953ba6c00, type: 2}
