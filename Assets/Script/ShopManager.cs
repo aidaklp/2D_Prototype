@@ -40,10 +40,10 @@ public class ShopManager : MonoBehaviour
 
         // NEW
         shopItems[2, 0] = 3; // Echo
-        shopItems[2, 1] = 50;
+        shopItems[2, 1] = 60;
 
         shopItems[3, 0] = 4; // Pitch shift
-        shopItems[3, 1] = 50;
+        shopItems[3, 1] = 70;
 
 
         //Initialises the purchase tracker (one slot per item)

@@ -31,6 +31,7 @@ public class GeneratorScript : MonoBehaviour
 
     //stores the font
     [SerializeField] private TMP_FontAsset musicalFont;
+    [SerializeField] private float textSize = 30f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,6 +75,7 @@ public class GeneratorScript : MonoBehaviour
 
         //changes the font
         box.GetComponent<TextMeshProUGUI>().font = musicalFont;
+        box.GetComponent<TextMeshProUGUI>().fontSize = textSize;
 
 
 
