@@ -34,7 +34,12 @@ public class GameData : MonoBehaviour
 
     //sets the first round to be true when the game is started 
     public bool isFirstRound = true;
+   
+    //for audio devices saved
 
+    [Header("Audio Devices")]
+    public string chosenMicrophoneName = "";
+    public string chosenOutputDeviceName = "";
 
 
     //method called for before Start() so very begining of the game
